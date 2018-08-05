@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap.css">
+    <link rel="stylesheet" href="https://actix.rs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://actix.rs/css/actix.css">
+    <link rel="stylesheet" href="https://actix.rs/css/highlight.css">
+    <link rel="icon" href="https://actix.rs/favicon.ico" title="actix">
+
+    <title>Server</title>
+  </head>
+  <body>
+    <header class="navbar navbar-light navbar-toggleable-md bd-navbar">
+      <nav class="actix-main-nav">
+        <div class="d-flex justify-content-between hidden-lg-up">
+            <a href="https://actix.rs/" class="navbar-brand">
+              <img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt="">
+            </a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#actix-main-nav" aria-label="Toggle navigation" aria-controls="actix-main-nav" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="actix-main-nav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item hd-lg-down">
+              <a class="navbar-brand" href="https://actix.rs/"><img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/docs/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/community/">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/code/">Code</a>
+            </li>
+            <li class="nav-item language-selector">
+              <i class="fa fa-fw fa-globe" aria-hidden="false"></i>
+              <ul class="subitem">
+              
+                <li class="submenu-item"><a href="https://actix.rs/">English</a></li>
+              
+              <li ><a href="https://ruster-xyz.github.io/server/Actix-web/whatisactix.html">中文</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+<div class="actix-pageheader">
+  <div class="container">
+    <h1 class="display-4">Server</h1>
+    
+  </div>
+</div>
+
+<div class="container actix-docs">
+  <div class="row">
+    <div class="col-md-3">
+
+      <button class="btn doctoggle" type="button" data-toggle="collapse" data-target="#collapsing-docnav" aria-expanded="false" aria-controls="collapsing-docnav">
+        Toggle navigation
+      </button>
+
+      <nav class="leftnav collapse show" id="collapsing-docnav">
+        <div class="" id="">
+          <h5>Introduction</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/">Welcome</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/whatis/">What is Actix</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/installation/">Installation</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Basics</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/getting-started/">Getting Started</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/application/">Application</a>
+              </li>
+              
+              <li class="active">
+                <a href="https://actix.rs/docs/server/">Server</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/handlers/">Handlers</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/extractors/">Extractors</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Advanced</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/errors/">Errors</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/url-dispatch/">URL Dispatch</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/request/">Requests</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/response/">Responses</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/testing/">Testing</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/middleware/">Middlewares</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/static-files/">Static Files</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Protocols</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/websockets/">Websockets</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/http2/">HTTP/2.0</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Patterns</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/autoreload/">Autoreloading</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/databases/">Databases</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/sentry/">Sentry</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>API Documentation</h5>
+          <div>
+            <ul class="nav">
+              <li><a href="https://docs.rs/actix" target="view_window">actix <span class="fa fa-external-link"></span></a></li>
+              <li><a href="https://actix.rs/api/actix-web/stable/actix_web/" target="view_window">actix-web <span class="fa fa-external-link"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <div class="col-md-9">
+      <div class="actix-content">
+        
+  
+
+<h1 id="the-http-server">The HTTP Server</h1>
+
+<p>The <a href="../../actix-web/actix_web/server/struct.HttpServer.html"><strong>HttpServer</strong></a> type is responsible for
+serving http requests.</p>
+
+<p><code>HttpServer</code> accepts an application factory as a parameter, and the
+application factory must have <code>Send</code> + <code>Sync</code> boundaries. More about that in the
+<em>multi-threading</em> section.</p>
+
+<p>To bind to a specific socket address,
+<a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.bind"><code>bind()</code></a>
+must be used, and it may be called multiple times. To bind ssl socket,
+<a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.bind_ssl"><code>bind_ssl()</code></a>
+or <a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.bind_tls"><code>bind_tls()</code></a>
+should be used. To start the http server, one of the start methods.</p>
+
+<ul>
+<li>use <a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.start"><code>start()</code></a>
+for a server</li>
+</ul>
+
+<p><code>HttpServer</code> is an actix actor. It must be initialized within a properly
+configured actix system:</p>
+
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">server</span>::<span class="n">HttpServer</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">sys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actix</span>::<span class="n">System</span>::<span class="n">new</span><span class="p">(</span><span class="s">&#34;guide&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="n">HttpServer</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">())))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&#34;127.0.0.1:59080&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">unwrap</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">start</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">run</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+
+<blockquote>
+<p>It is possible to start a server in a separate thread with the <code>run()</code> method. In that
+case the server spawns a new thread and creates a new actix system in it. To stop
+this server, send a <code>StopServer</code> message.</p>
+</blockquote>
+
+<p><code>HttpServer</code> is implemented as an actix actor. It is possible to communicate with the server
+via a messaging system. Start method, e.g. <code>start()</code>, returns the
+address of the started http server. It accepts several messages:</p>
+
+<ul>
+<li><code>PauseServer</code> - Pause accepting incoming connections</li>
+<li><code>ResumeServer</code> - Resume accepting incoming connections</li>
+<li><code>StopServer</code> - Stop incoming connection processing, stop all workers and exit</li>
+</ul>
+
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">sync</span>::<span class="n">mpsc</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">thread</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">rx</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mpsc</span>::<span class="n">channel</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="n">thread</span>::<span class="n">spawn</span><span class="p">(</span><span class="k">move</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">sys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actix</span>::<span class="n">System</span>::<span class="n">new</span><span class="p">(</span><span class="s">&#34;http-server&#34;</span><span class="p">);</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">App</span>::<span class="n">new</span><span class="p">()</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">()))</span><span class="w">
+</span><span class="w">        </span><span class="p">})</span><span class="w">
+</span><span class="w">            </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&#34;127.0.0.1:0&#34;</span><span class="p">).</span><span class="n">expect</span><span class="p">(</span><span class="s">&#34;Can not bind to 127.0.0.1:0&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w">            </span><span class="p">.</span><span class="n">shutdown_timeout</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="w">    </span><span class="c1">// &lt;- Set shutdown timeout to 60 seconds
+</span><span class="c1"></span><span class="w">            </span><span class="p">.</span><span class="n">start</span><span class="p">();</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">addr</span><span class="p">);</span><span class="w">
+</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">run</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="p">});</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rx</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addr</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">server</span>::<span class="n">StopServer</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">graceful</span>: <span class="nc">true</span><span class="w"> </span><span class="p">}).</span><span class="n">wait</span><span class="p">();</span><span class="w"> </span><span class="c1">// &lt;- Send `StopServer` message to server.
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+
+<h2 id="multi-threading">Multi-threading</h2>
+
+<p><code>HttpServer</code> automatically starts an number of http workers, by default
+this number is equal to number of logical CPUs in the system. This number
+can be overridden with the
+<a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.workers"><code>HttpServer::workers()</code></a> method.</p>
+
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">server</span>::<span class="n">HttpServer</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">HttpServer</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">())))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">workers</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;- Start 4 workers
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+
+<p>The server creates a separate application instance for each created worker. Application state
+is not shared between threads. To share state, <code>Arc</code> could be used.</p>
+
+<blockquote>
+<p>Application state does not need to be <code>Send</code> and <code>Sync</code>,
+but factories must be <code>Send</code> + <code>Sync</code>.</p>
+</blockquote>
+
+<h2 id="ssl">SSL</h2>
+
+<p>There are two features for ssl server: <code>tls</code> and <code>alpn</code>. The <code>tls</code> feature is
+for <code>native-tls</code> integration and <code>alpn</code> is for <code>openssl</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">dependencies</span><span class="p">]</span>
+<span class="nx">actix</span><span class="err">-</span><span class="nx">web</span> <span class="p">=</span> <span class="err">{</span> <span class="nx">version</span> <span class="p">=</span> <span class="s2">&#34;0.7&#34;</span><span class="p">,</span> <span class="nx">features</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;alpn&#34;</span><span class="p">]</span> <span class="err">}</span></code></pre></div>
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">,</span><span class="w"> </span><span class="n">Responder</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">openssl</span>::<span class="n">ssl</span>::<span class="p">{</span><span class="n">SslAcceptor</span><span class="p">,</span><span class="w"> </span><span class="n">SslFiletype</span><span class="p">,</span><span class="w"> </span><span class="n">SslMethod</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">impl</span><span class="w"> </span><span class="n">Responder</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="s">&#34;Welcome!&#34;</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="c1">// load ssl keys
+</span><span class="c1"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SslAcceptor</span>::<span class="n">mozilla_intermediate</span><span class="p">(</span><span class="n">SslMethod</span>::<span class="n">tls</span><span class="p">()).</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="n">builder</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">set_private_key_file</span><span class="p">(</span><span class="s">&#34;key.pem&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">SslFiletype</span>::<span class="n">PEM</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">    </span><span class="n">builder</span><span class="p">.</span><span class="n">set_certificate_chain_file</span><span class="p">(</span><span class="s">&#34;cert.pem&#34;</span><span class="p">).</span><span class="n">unwrap</span><span class="p">();</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="n">server</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/index.html&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="n">index</span><span class="p">)))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">bind_ssl</span><span class="p">(</span><span class="s">&#34;127.0.0.1:8080&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">builder</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">unwrap</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">run</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+
+<blockquote>
+<p><strong>Note</strong>: the <em>HTTP/2.0</em> protocol requires
+<a href="https://tools.ietf.org/html/rfc7301">tls alpn</a>.
+At the moment, only <code>openssl</code> has <code>alpn</code> support.
+For a full example, check out
+<a href="https://github.com/actix/examples/tree/master/tls">examples/tls</a>.</p>
+</blockquote>
+
+<p>To create the key.pem and cert.pem use the command. <strong>Fill in your own subject</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem <span class="se">\
+</span><span class="se"></span>  -days <span class="m">365</span> -sha256 -subj <span class="s2">&#34;/C=CN/ST=Fujian/L=Xiamen/O=TVlinux/OU=Org/CN=muro.lxd&#34;</span></code></pre></div>
+<p>To remove the password, then copy nopass.pem to key.pem</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl rsa -in key.pem -out nopass.pem</code></pre></div>
+<h2 id="keep-alive">Keep-Alive</h2>
+
+<p>Actix can wait for requests on a keep-alive connection.</p>
+
+<blockquote>
+<p><em>keep alive</em> connection behavior is defined by server settings.</p>
+</blockquote>
+
+<ul>
+<li><code>75</code>, <code>Some(75)</code>, <code>KeepAlive::Timeout(75)</code> - enable 75 second <em>keep alive</em> timer.</li>
+<li><code>None</code> or <code>KeepAlive::Disabled</code> - disable <em>keep alive</em>.</li>
+<li><code>KeepAlive::Tcp(75)</code> - use <code>SO_KEEPALIVE</code> socket option.</li>
+</ul>
+
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">server</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">())))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">keep_alive</span><span class="p">(</span><span class="mi">75</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;- Set keep-alive to 75 seconds
+</span><span class="c1"></span><span class="w">
+</span><span class="w">    </span><span class="n">server</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">())))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">keep_alive</span><span class="p">(</span><span class="n">server</span>::<span class="n">KeepAlive</span>::<span class="n">Tcp</span><span class="p">(</span><span class="mi">75</span><span class="p">));</span><span class="w"> </span><span class="c1">// &lt;- Use `SO_KEEPALIVE` socket option.
+</span><span class="c1"></span><span class="w">
+</span><span class="w">    </span><span class="n">server</span>::<span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">())))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">keep_alive</span><span class="p">(</span><span class="nb">None</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;- Disable keep-alive
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+
+<p>If the first option is selected, then <em>keep alive</em> state is
+calculated based on the response&rsquo;s <em>connection-type</em>. By default
+<code>HttpResponse::connection_type</code> is not defined. In that case <em>keep alive</em> is
+defined by the request&rsquo;s http version.</p>
+
+<blockquote>
+<p><em>keep alive</em> is <strong>off</strong> for <em>HTTP/1.0</em> and is <strong>on</strong> for <em>HTTP/1.1</em> and <em>HTTP/2.0</em>.</p>
+</blockquote>
+
+<p><em>Connection type</em> can be changed with <code>HttpResponseBuilder::connection_type()</code> method.</p>
+
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">connection_type</span><span class="p">(</span><span class="n">http</span>::<span class="n">ConnectionType</span>::<span class="n">Close</span><span class="p">)</span><span class="w"> </span><span class="c1">// &lt;- Close connection
+</span><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">force_close</span><span class="p">()</span><span class="w">                                </span><span class="c1">// &lt;- Alternative method
+</span><span class="c1"></span><span class="w">        </span><span class="p">.</span><span class="n">finish</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+
+<h2 id="graceful-shutdown">Graceful shutdown</h2>
+
+<p><code>HttpServer</code> supports graceful shutdown. After receiving a stop signal, workers
+have a specific amount of time to finish serving requests. Any workers still alive after the
+timeout are force-dropped. By default the shutdown timeout is set to 30 seconds.
+You can change this parameter with the
+<a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.shutdown_timeout"><code>HttpServer::shutdown_timeout()</code></a> method.</p>
+
+<p>You can send a stop message to the server with the server address and specify if you want
+graceful shutdown or not. The
+<a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.start"><code>start()</code></a>
+methods returns address of the server.</p>
+
+<p><code>HttpServer</code> handles several OS signals. <em>CTRL-C</em> is available on all OSs,
+other signals are available on unix systems.</p>
+
+<ul>
+<li><em>SIGINT</em> - Force shutdown workers</li>
+<li><em>SIGTERM</em> - Graceful shutdown workers</li>
+<li><em>SIGQUIT</em> - Force shutdown workers</li>
+</ul>
+
+<blockquote>
+<p>It is possible to disable signal handling with
+<a href="../../actix-web/actix_web/server/struct.HttpServer.html#method.disable_signals"><code>HttpServer::disable_signals()</code></a>
+method.</p>
+</blockquote>
+
+
+        <div class="github-edit">
+            <a class="fa fa-github" href="https://github.com/actix/actix-website/tree/master/content/docs/server.md"> Edit on GitHub</a>
+        </div>
+        
+        <div class="actix-next"><b>Next up</b>: <a href = /docs/handlers/>
+         Handlers</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="actix-footer">
+      <div class="text-muted actix-footer-gray d-flex justify-content-between">
+        <div class="actix-footer-info">
+          Copyright © 2018 The Actix Team
+        </div>
+        <div class="actix-footer-social">
+          <a href="https://github.com/actix" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://actix.rs/js/bootstrap.min.js"></script>
+    <script src="https://actix.rs/js/actix.js"></script>
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110322332-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

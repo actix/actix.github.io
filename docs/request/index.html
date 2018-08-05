@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap.css">
+    <link rel="stylesheet" href="https://actix.rs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://actix.rs/css/actix.css">
+    <link rel="stylesheet" href="https://actix.rs/css/highlight.css">
+    <link rel="icon" href="https://actix.rs/favicon.ico" title="actix">
+
+    <title>Requests</title>
+  </head>
+  <body>
+    <header class="navbar navbar-light navbar-toggleable-md bd-navbar">
+      <nav class="actix-main-nav">
+        <div class="d-flex justify-content-between hidden-lg-up">
+            <a href="https://actix.rs/" class="navbar-brand">
+              <img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt="">
+            </a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#actix-main-nav" aria-label="Toggle navigation" aria-controls="actix-main-nav" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="actix-main-nav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item hd-lg-down">
+              <a class="navbar-brand" href="https://actix.rs/"><img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/docs/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/community/">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/code/">Code</a>
+            </li>
+            <li class="nav-item language-selector">
+              <i class="fa fa-fw fa-globe" aria-hidden="false"></i>
+              <ul class="subitem">
+              
+                <li class="submenu-item"><a href="https://actix.rs/">English</a></li>
+              
+              <li ><a href="https://ruster-xyz.github.io/server/Actix-web/whatisactix.html">中文</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+<div class="actix-pageheader">
+  <div class="container">
+    <h1 class="display-4">Requests</h1>
+    
+  </div>
+</div>
+
+<div class="container actix-docs">
+  <div class="row">
+    <div class="col-md-3">
+
+      <button class="btn doctoggle" type="button" data-toggle="collapse" data-target="#collapsing-docnav" aria-expanded="false" aria-controls="collapsing-docnav">
+        Toggle navigation
+      </button>
+
+      <nav class="leftnav collapse show" id="collapsing-docnav">
+        <div class="" id="">
+          <h5>Introduction</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/">Welcome</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/whatis/">What is Actix</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/installation/">Installation</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Basics</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/getting-started/">Getting Started</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/application/">Application</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/server/">Server</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/handlers/">Handlers</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/extractors/">Extractors</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Advanced</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/errors/">Errors</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/url-dispatch/">URL Dispatch</a>
+              </li>
+              
+              <li class="active">
+                <a href="https://actix.rs/docs/request/">Requests</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/response/">Responses</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/testing/">Testing</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/middleware/">Middlewares</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/static-files/">Static Files</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Protocols</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/websockets/">Websockets</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/http2/">HTTP/2.0</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Patterns</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/autoreload/">Autoreloading</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/databases/">Databases</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/sentry/">Sentry</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>API Documentation</h5>
+          <div>
+            <ul class="nav">
+              <li><a href="https://docs.rs/actix" target="view_window">actix <span class="fa fa-external-link"></span></a></li>
+              <li><a href="https://actix.rs/api/actix-web/stable/actix_web/" target="view_window">actix-web <span class="fa fa-external-link"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <div class="col-md-9">
+      <div class="actix-content">
+        
+  
+
+<h1 id="content-encoding">Content Encoding</h1>
+
+<p>Actix automatically <em>decompresses</em> payloads. The following codecs are supported:</p>
+
+<ul>
+<li>Brotli</li>
+<li>Gzip</li>
+<li>Deflate</li>
+<li>Identity</li>
+</ul>
+
+<p>If request headers contain a <code>Content-Encoding</code> header, the request payload is decompressed
+according to the header value. Multiple codecs are not supported,
+i.e: <code>Content-Encoding: br, gzip</code>.</p>
+
+<h1 id="json-request">JSON Request</h1>
+
+<p>There are several options for json body deserialization.</p>
+
+<p>The first option is to use <em>Json</em> extractor. First, you define a handler function
+that accepts <code>Json&lt;T&gt;</code> as a parameter, then, you use the <code>.with()</code> method for registering
+this handler. It is also possible to accept arbitrary valid json object by
+using <code>serde_json::Value</code> as a type <code>T</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="sd">/// extract `Info` using serde
+</span><span class="sd"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">info</span>: <span class="nc">Json</span><span class="o">&lt;</span><span class="n">Info</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">username</span><span class="p">))</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">       </span><span class="s">&#34;/index.html&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">       </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">POST</span><span class="p">).</span><span class="n">with</span><span class="p">(</span><span class="n">index</span><span class="p">));</span><span class="w">  </span><span class="c1">// &lt;- use `with` extractor
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<p>Another option is to use <em>HttpRequest::json()</em>. This method returns a
+<a href="../../actix-web/actix_web/dev/struct.JsonBody.html"><em>JsonBody</em></a> object which resolves into
+the deserialized value.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[derive(Debug, Serialize, Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyObj</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">name</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">number</span>: <span class="kt">i32</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">=</span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="o">=</span><span class="n">Error</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">req</span><span class="p">.</span><span class="n">json</span><span class="p">().</span><span class="n">from_err</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">val</span>: <span class="nc">MyObj</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;model: {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">);</span><span class="w">
+</span><span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">().</span><span class="n">json</span><span class="p">(</span><span class="n">val</span><span class="p">))</span><span class="w">  </span><span class="c1">// &lt;- send response
+</span><span class="c1"></span><span class="w">        </span><span class="p">})</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">responder</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>You may also manually load the payload into memory and then deserialize it.</p>
+
+<p>In the following example, we will deserialize a <em>MyObj</em> struct. We need to load the request
+body first and then deserialize the json into an object.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_json</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="p">{</span><span class="n">Future</span><span class="p">,</span><span class="w"> </span><span class="n">Stream</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Serialize, Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyObj</span><span class="w"> </span><span class="p">{</span><span class="n">name</span>: <span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">number</span>: <span class="kt">i32</span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">=</span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="o">=</span><span class="n">Error</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="c1">// `concat2` will asynchronously read each chunk of the request body and
+</span><span class="c1"></span><span class="w">   </span><span class="c1">// return a single, concatenated, chunk
+</span><span class="c1"></span><span class="w">   </span><span class="n">req</span><span class="p">.</span><span class="n">concat2</span><span class="p">()</span><span class="w">
+</span><span class="w">      </span><span class="c1">// `Future::from_err` acts like `?` in that it coerces the error type from
+</span><span class="c1"></span><span class="w">      </span><span class="c1">// the future into the final error type
+</span><span class="c1"></span><span class="w">      </span><span class="p">.</span><span class="n">from_err</span><span class="p">()</span><span class="w">
+</span><span class="w">      </span><span class="c1">// `Future::and_then` can be used to merge an asynchronous workflow with a
+</span><span class="c1"></span><span class="w">      </span><span class="c1">// synchronous workflow
+</span><span class="c1"></span><span class="w">      </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">body</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">          </span><span class="kd">let</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serde_json</span>::<span class="n">from_slice</span>::<span class="o">&lt;</span><span class="n">MyObj</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">body</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">          </span><span class="nb">Ok</span><span class="p">(</span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">().</span><span class="n">json</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="w">
+</span><span class="w">      </span><span class="p">})</span><span class="w">
+</span><span class="w">      </span><span class="p">.</span><span class="n">responder</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<blockquote>
+<p>A complete example for both options is available in
+<a href="https://github.com/actix/examples/tree/master/json/">examples directory</a>.</p>
+</blockquote>
+
+<h1 id="chunked-transfer-encoding">Chunked transfer encoding</h1>
+
+<p>Actix automatically decodes <em>chunked</em> encoding. <code>HttpRequest::payload()</code> already contains
+the decoded byte stream. If the request payload is compressed with one of the supported
+compression codecs (br, gzip, deflate), then the byte stream is decompressed.</p>
+
+<h1 id="multipart-body">Multipart body</h1>
+
+<p>Actix provides multipart stream support.
+<a href="../../actix-web/actix_web/multipart/struct.Multipart.html"><em>Multipart</em></a> is implemented as
+a stream of multipart items. Each item can be a
+<a href="../../actix-web/actix_web/multipart/struct.Field.html"><em>Field</em></a> or a nested
+<em>Multipart</em> stream.<code>HttpResponse::multipart()</code> returns the <em>Multipart</em> stream
+for the current request.</p>
+
+<p>The following demonstrates multipart stream handling for a simple form:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="n">Future</span><span class="o">&lt;</span><span class="p">...</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="c1">// get multipart and iterate over multipart items
+</span><span class="c1"></span><span class="w">    </span><span class="n">req</span><span class="p">.</span><span class="n">multipart</span><span class="p">()</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">item</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">           </span><span class="k">match</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">              </span><span class="n">multipart</span>::<span class="n">MultipartItem</span>::<span class="n">Field</span><span class="p">(</span><span class="n">field</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                 </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;==== FIELD ==== {:?} {:?}&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">                          </span><span class="n">field</span><span class="p">.</span><span class="n">headers</span><span class="p">(),</span><span class="w">
+</span><span class="w">                          </span><span class="n">field</span><span class="p">.</span><span class="n">content_type</span><span class="p">());</span><span class="w">
+</span><span class="w">                 </span><span class="n">Either</span>::<span class="n">A</span><span class="p">(</span><span class="w">
+</span><span class="w">                   </span><span class="n">field</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">chunk</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                        </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;-- CHUNK: </span><span class="se">\n</span><span class="s">{}&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">                                 </span><span class="n">std</span>::<span class="kt">str</span>::<span class="n">from_utf8</span><span class="p">(</span><span class="o">&amp;</span><span class="n">chunk</span><span class="p">).</span><span class="n">unwrap</span><span class="p">());})</span><span class="w">
+</span><span class="w">                      </span><span class="p">.</span><span class="n">fold</span><span class="p">((),</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">result</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(()))))</span><span class="w">
+</span><span class="w">                </span><span class="p">},</span><span class="w">
+</span><span class="w">              </span><span class="n">multipart</span>::<span class="n">MultipartItem</span>::<span class="n">Nested</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                 </span><span class="n">Either</span>::<span class="n">B</span><span class="p">(</span><span class="n">result</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(())))</span><span class="w">
+</span><span class="w">              </span><span class="p">}</span><span class="w">
+</span><span class="w">         </span><span class="p">}</span><span class="w">
+</span><span class="w">   </span><span class="p">})</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<blockquote>
+<p>A full example is available in the
+<a href="https://github.com/actix/examples/tree/master/multipart/">examples directory</a>.</p>
+</blockquote>
+
+<h1 id="urlencoded-body">Urlencoded body</h1>
+
+<p>Actix provides support for <em>application/x-www-form-urlencoded</em> encoded bodies.
+<code>HttpResponse::urlencoded()</code> returns a
+<a href="../../actix-web/actix_web/dev/struct.UrlEncoded.html"><em>UrlEncoded</em></a> future, which resolves
+to the deserialized instance. The type of the instance must implement the
+<code>Deserialize</code> trait from <em>serde</em>.</p>
+
+<p>The <em>UrlEncoded</em> future can resolve into an error in several cases:</p>
+
+<ul>
+<li>content type is not <code>application/x-www-form-urlencoded</code></li>
+<li>transfer encoding is <code>chunked</code>.</li>
+<li>content-length is greater than 256k</li>
+<li>payload terminates with error.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="n">future</span>::<span class="p">{</span><span class="n">Future</span><span class="p">,</span><span class="w"> </span><span class="n">ok</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">FormData</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">=</span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="o">=</span><span class="n">Error</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">req</span><span class="p">.</span><span class="n">urlencoded</span>::<span class="o">&lt;</span><span class="n">FormData</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="c1">// &lt;- get UrlEncoded future
+</span><span class="c1"></span><span class="w">       </span><span class="p">.</span><span class="n">from_err</span><span class="p">()</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">data</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// &lt;- deserialized instance
+</span><span class="c1"></span><span class="w">             </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;USERNAME: {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">username</span><span class="p">);</span><span class="w">
+</span><span class="w">             </span><span class="n">ok</span><span class="p">(</span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">().</span><span class="n">into</span><span class="p">())</span><span class="w">
+</span><span class="w">       </span><span class="p">})</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">responder</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="err">#</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span></code></pre></div>
+<h1 id="streaming-request">Streaming request</h1>
+
+<p><em>HttpRequest</em> is a stream of <code>Bytes</code> objects. It can be used to read the request
+body payload.</p>
+
+<p>In the following example, we read and print the request payload chunk by chunk:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="p">{</span><span class="n">Future</span><span class="p">,</span><span class="w"> </span><span class="n">Stream</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Box</span><span class="o">&lt;</span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">=</span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="o">=</span><span class="n">Error</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">req</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">payload</span><span class="p">()</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">from_err</span><span class="p">()</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">fold</span><span class="p">((),</span><span class="w"> </span><span class="o">|</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">chunk</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">            </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Chunk: {:?}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">chunk</span><span class="p">);</span><span class="w">
+</span><span class="w">            </span><span class="n">result</span>::<span class="o">&lt;</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">error</span>::<span class="n">PayloadError</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(()))</span><span class="w">
+</span><span class="w">        </span><span class="p">})</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">().</span><span class="n">finish</span><span class="p">())</span><span class="w">
+</span><span class="w">       </span><span class="p">.</span><span class="n">responder</span><span class="p">()</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+
+        <div class="github-edit">
+            <a class="fa fa-github" href="https://github.com/actix/actix-website/tree/master/content/docs/request.md"> Edit on GitHub</a>
+        </div>
+        
+        <div class="actix-next"><b>Next up</b>: <a href = /docs/response/>
+         Responses</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="actix-footer">
+      <div class="text-muted actix-footer-gray d-flex justify-content-between">
+        <div class="actix-footer-info">
+          Copyright © 2018 The Actix Team
+        </div>
+        <div class="actix-footer-social">
+          <a href="https://github.com/actix" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://actix.rs/js/bootstrap.min.js"></script>
+    <script src="https://actix.rs/js/actix.js"></script>
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110322332-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap.css">
+    <link rel="stylesheet" href="https://actix.rs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://actix.rs/css/actix.css">
+    <link rel="stylesheet" href="https://actix.rs/css/highlight.css">
+    <link rel="icon" href="https://actix.rs/favicon.ico" title="actix">
+
+    <title>Errors</title>
+  </head>
+  <body>
+    <header class="navbar navbar-light navbar-toggleable-md bd-navbar">
+      <nav class="actix-main-nav">
+        <div class="d-flex justify-content-between hidden-lg-up">
+            <a href="https://actix.rs/" class="navbar-brand">
+              <img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt="">
+            </a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#actix-main-nav" aria-label="Toggle navigation" aria-controls="actix-main-nav" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="actix-main-nav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item hd-lg-down">
+              <a class="navbar-brand" href="https://actix.rs/"><img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/docs/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/community/">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/code/">Code</a>
+            </li>
+            <li class="nav-item language-selector">
+              <i class="fa fa-fw fa-globe" aria-hidden="false"></i>
+              <ul class="subitem">
+              
+                <li class="submenu-item"><a href="https://actix.rs/">English</a></li>
+              
+              <li ><a href="https://ruster-xyz.github.io/server/Actix-web/whatisactix.html">中文</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+<div class="actix-pageheader">
+  <div class="container">
+    <h1 class="display-4">Errors</h1>
+    
+  </div>
+</div>
+
+<div class="container actix-docs">
+  <div class="row">
+    <div class="col-md-3">
+
+      <button class="btn doctoggle" type="button" data-toggle="collapse" data-target="#collapsing-docnav" aria-expanded="false" aria-controls="collapsing-docnav">
+        Toggle navigation
+      </button>
+
+      <nav class="leftnav collapse show" id="collapsing-docnav">
+        <div class="" id="">
+          <h5>Introduction</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/">Welcome</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/whatis/">What is Actix</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/installation/">Installation</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Basics</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/getting-started/">Getting Started</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/application/">Application</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/server/">Server</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/handlers/">Handlers</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/extractors/">Extractors</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Advanced</h5>
+          <div>
+            <ul class="nav">
+              
+              <li class="active">
+                <a href="https://actix.rs/docs/errors/">Errors</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/url-dispatch/">URL Dispatch</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/request/">Requests</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/response/">Responses</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/testing/">Testing</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/middleware/">Middlewares</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/static-files/">Static Files</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Protocols</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/websockets/">Websockets</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/http2/">HTTP/2.0</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Patterns</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/autoreload/">Autoreloading</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/databases/">Databases</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/sentry/">Sentry</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>API Documentation</h5>
+          <div>
+            <ul class="nav">
+              <li><a href="https://docs.rs/actix" target="view_window">actix <span class="fa fa-external-link"></span></a></li>
+              <li><a href="https://actix.rs/api/actix-web/stable/actix_web/" target="view_window">actix-web <span class="fa fa-external-link"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <div class="col-md-9">
+      <div class="actix-content">
+        
+  
+
+<h1 id="errors">Errors</h1>
+
+<p>Actix uses its own <a href="../../actix-web/actix_web/error/struct.Error.html"><code>actix_web::error::Error</code></a> type and
+<a href="../../actix-web/actix_web/error/trait.ResponseError.html"><code>actix_web::error::ResponseError</code></a> trait for error handling
+from web handlers.</p>
+
+<p>If a handler returns an <code>Error</code> (referring to the <a href="https://doc.rust-lang.org/std/error/trait.Error.html">general Rust trait
+<code>std::error::Error</code></a>) in a <code>Result</code> that also implements the
+<code>ResponseError</code> trait, actix will render that error as an HTTP response.
+<code>ResponseError</code> has a single function called <code>error_response()</code> that returns
+<code>HttpResponse</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">pub</span><span class="w"> </span><span class="k">trait</span><span class="w"> </span><span class="n">ResponseError</span>: <span class="nc">Fail</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">error_response</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">HttpResponse</span>::<span class="n">new</span><span class="p">(</span><span class="n">StatusCode</span>::<span class="n">INTERNAL_SERVER_ERROR</span><span class="p">)</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>A <code>Responder</code> coerces compatible <code>Result</code>s into HTTP responses:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">impl</span><span class="o">&lt;</span><span class="n">T</span>: <span class="nc">Responder</span><span class="p">,</span><span class="w"> </span><span class="n">E</span>: <span class="nb">Into</span><span class="o">&lt;</span><span class="n">Error</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Responder</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span></code></pre></div>
+<p><code>Error</code> in the code above is actix&rsquo;s error definition, and any errors that
+implement <code>ResponseError</code> can be converted to one automatically.</p>
+
+<p>Actix-web provides <code>ResponseError</code> implementations for some common non-actix
+errors. For example, if a handler responds with an <code>io::Error</code>, that error is
+converted into an <code>HttpInternalServerError</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">io</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">io</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="n">fs</span>::<span class="n">NamedFile</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">fs</span>::<span class="n">NamedFile</span>::<span class="n">open</span><span class="p">(</span><span class="s">&#34;static/index.html&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>See <a href="responseerrorimpls">the actix-web API documentation</a> for a full list of
+foreign implementations for <code>ResponseError</code>.</p>
+
+<h2 id="an-example-of-a-custom-error-response">An example of a custom error response</h2>
+
+<p>Here&rsquo;s an example implementation for <code>ResponseError</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Fail, Debug)]</span><span class="w">
+</span><span class="w"></span><span class="cp">#[fail(display=</span><span class="s">&#34;my error&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="n">name</span>: <span class="kp">&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// Use default implementation for `error_response()` method
+</span><span class="c1"></span><span class="k">impl</span><span class="w"> </span><span class="n">error</span>::<span class="n">ResponseError</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">MyError</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">MyError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="n">MyError</span><span class="p">{</span><span class="n">name</span>: <span class="s">&#34;test&#34;</span><span class="p">})</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p><code>ResponseError</code> has a default implementation for <code>error_response()</code> that will
+render a <em>500</em> (internal server error), and that&rsquo;s what will happen when the
+<code>index</code> handler executes above.</p>
+
+<p>Override <code>error_response()</code> to produce more useful results:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">failure</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Fail, Debug)]</span><span class="w">
+</span><span class="w"></span><span class="k">enum</span> <span class="nc">MyError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="cp">#[fail(display=</span><span class="s">&#34;internal error&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w">   </span><span class="n">InternalError</span><span class="p">,</span><span class="w">
+</span><span class="w">   </span><span class="cp">#[fail(display=</span><span class="s">&#34;bad request&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w">   </span><span class="n">BadClientData</span><span class="p">,</span><span class="w">
+</span><span class="w">   </span><span class="cp">#[fail(display=</span><span class="s">&#34;timeout&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w">   </span><span class="n">Timeout</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">error</span>::<span class="n">ResponseError</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">MyError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">error_response</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">       </span><span class="k">match</span><span class="w"> </span><span class="o">*</span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">          </span><span class="n">MyError</span>::<span class="n">InternalError</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">new</span><span class="p">(</span><span class="w">
+</span><span class="w">              </span><span class="n">http</span>::<span class="n">StatusCode</span>::<span class="n">INTERNAL_SERVER_ERROR</span><span class="p">),</span><span class="w">
+</span><span class="w">          </span><span class="n">MyError</span>::<span class="n">BadClientData</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">new</span><span class="p">(</span><span class="w">
+</span><span class="w">              </span><span class="n">http</span>::<span class="n">StatusCode</span>::<span class="n">BAD_REQUEST</span><span class="p">),</span><span class="w">
+</span><span class="w">          </span><span class="n">MyError</span>::<span class="n">Timeout</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">new</span><span class="p">(</span><span class="w">
+</span><span class="w">              </span><span class="n">http</span>::<span class="n">StatusCode</span>::<span class="n">GATEWAY_TIMEOUT</span><span class="p">),</span><span class="w">
+</span><span class="w">       </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">MyError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="n">MyError</span>::<span class="n">BadClientData</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<h1 id="error-helpers">Error helpers</h1>
+
+<p>Actix provides a set of error helper functions that are useful for generating
+specific HTTP error codes from other errors. Here we convert <code>MyError</code>, which
+doesn&rsquo;t implement the <code>ResponseError</code> trait, to a <em>400</em> (bad request) using
+<code>map_err</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="err">#</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">actix_web</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="o">*</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Debug)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="n">name</span>: <span class="kp">&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">result</span>: <span class="nb">Result</span><span class="o">&lt;&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">MyError</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">MyError</span><span class="p">{</span><span class="n">name</span>: <span class="s">&#34;test&#34;</span><span class="p">});</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">e</span><span class="o">|</span><span class="w"> </span><span class="n">error</span>::<span class="n">ErrorBadRequest</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">))</span><span class="o">?</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>See the <a href="../../actix-web/actix_web/error/index.html#functions">API documentation for actix-web&rsquo;s <code>error</code> module</a> for a
+full list of available error helpers.</p>
+
+<h1 id="compatibility-with-failure">Compatibility with failure</h1>
+
+<p>Actix-web provides automatic compatibility with the <a href="https://github.com/rust-lang-nursery/failure">failure</a> library so that
+errors deriving <code>fail</code> will be converted automatically to an actix error. Keep
+in mind that those errors will render with the default <em>500</em> status code unless you
+also provide your own <code>error_response()</code> implementation for them.</p>
+
+<h1 id="error-logging">Error logging</h1>
+
+<p>Actix logs all errors at the <code>WARN</code> log level. If an application&rsquo;s log level is
+set to <code>DEBUG</code> and <code>RUST_BACKTRACE</code> is enabled, the backtrace is also logged.
+These are configurable with environmental variables:</p>
+
+<pre><code>&gt;&gt; RUST_BACKTRACE=1 RUST_LOG=actix_web=debug cargo run
+</code></pre>
+
+<p>The <code>Error</code> type uses the cause&rsquo;s error backtrace if available. If the
+underlying failure does not provide a backtrace, a new backtrace is constructed
+pointing to the point where the conversion occurred (rather than the origin of
+the error).</p>
+
+<h1 id="recommended-practices-in-error-handling">Recommended practices in error handling</h1>
+
+<p>It might be useful to think about dividing the errors an application produces
+into two broad groups: those which are intended to be be user-facing, and those
+which are not.</p>
+
+<p>An example of the former is that I might use failure to specify a <code>UserError</code>
+enum which encapsulates a <code>ValidationError</code> to return whenever a user sends bad
+input:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">failure</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Fail, Debug)]</span><span class="w">
+</span><span class="w"></span><span class="k">enum</span> <span class="nc">UserError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="cp">#[fail(display=</span><span class="s">&#34;Validation error on field: {}&#34;</span><span class="cp">, field)]</span><span class="w">
+</span><span class="w">   </span><span class="n">ValidationError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">       </span><span class="n">field</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w">   </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">error</span>::<span class="n">ResponseError</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">UserError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">error_response</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">       </span><span class="k">match</span><span class="w"> </span><span class="o">*</span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">          </span><span class="n">UserError</span>::<span class="n">ValidationError</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">new</span><span class="p">(</span><span class="w">
+</span><span class="w">              </span><span class="n">http</span>::<span class="n">StatusCode</span>::<span class="n">BAD_REQUEST</span><span class="p">),</span><span class="w">
+</span><span class="w">       </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>This will behave exactly as intended because the error message defined with
+<code>display</code> is written with the explicit intent to be read by a user.</p>
+
+<p>However, sending back an error&rsquo;s message isn&rsquo;t desirable for all errors &ndash;
+there are many failures that occur in a server environment where we&rsquo;d probably
+want the specifics to be hidden from the user. For example, if a database goes
+down and client libraries start producing connect timeout errors, or if an HTML
+template was improperly formatted and errors when rendered. In these cases, it
+might be preferable to map the errors to a generic error suitable for user
+consumption.</p>
+
+<p>Here&rsquo;s an example that maps an internal error to a user-facing <code>InternalError</code>
+with a custom message:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">failure</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Fail, Debug)]</span><span class="w">
+</span><span class="w"></span><span class="k">enum</span> <span class="nc">UserError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="cp">#[fail(display=</span><span class="s">&#34;An internal error occurred. Please try again later.&#34;</span><span class="cp">)]</span><span class="w">
+</span><span class="w">   </span><span class="n">InternalError</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">error</span>::<span class="n">ResponseError</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">UserError</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">error_response</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">       </span><span class="k">match</span><span class="w"> </span><span class="o">*</span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">          </span><span class="n">UserError</span>::<span class="n">InternalError</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">new</span><span class="p">(</span><span class="w">
+</span><span class="w">              </span><span class="n">http</span>::<span class="n">StatusCode</span>::<span class="n">INTERNAL_SERVER_ERROR</span><span class="p">),</span><span class="w">
+</span><span class="w">       </span><span class="p">}</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">_</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;&amp;</span><span class="nb">&#39;static</span><span class="w"> </span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">UserError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">fs</span>::<span class="n">NamedFile</span>::<span class="n">open</span><span class="p">(</span><span class="s">&#34;static/index.html&#34;</span><span class="p">).</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_e</span><span class="o">|</span><span class="w"> </span><span class="n">UserError</span>::<span class="n">InternalError</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="s">&#34;success!&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>By dividing errors into those which are user facing and those which are not, we
+can ensure that we don&rsquo;t accidentally expose users to errors thrown by
+application internals which they weren&rsquo;t meant to see.</p>
+
+
+        <div class="github-edit">
+            <a class="fa fa-github" href="https://github.com/actix/actix-website/tree/master/content/docs/errors.md"> Edit on GitHub</a>
+        </div>
+        
+        <div class="actix-next"><b>Next up</b>: <a href = /docs/url-dispatch/>
+         URL Dispatch</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="actix-footer">
+      <div class="text-muted actix-footer-gray d-flex justify-content-between">
+        <div class="actix-footer-info">
+          Copyright © 2018 The Actix Team
+        </div>
+        <div class="actix-footer-social">
+          <a href="https://github.com/actix" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://actix.rs/js/bootstrap.min.js"></script>
+    <script src="https://actix.rs/js/actix.js"></script>
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110322332-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

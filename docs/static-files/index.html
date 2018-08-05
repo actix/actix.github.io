@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap.css">
+    <link rel="stylesheet" href="https://actix.rs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://actix.rs/css/actix.css">
+    <link rel="stylesheet" href="https://actix.rs/css/highlight.css">
+    <link rel="icon" href="https://actix.rs/favicon.ico" title="actix">
+
+    <title>Static Files</title>
+  </head>
+  <body>
+    <header class="navbar navbar-light navbar-toggleable-md bd-navbar">
+      <nav class="actix-main-nav">
+        <div class="d-flex justify-content-between hidden-lg-up">
+            <a href="https://actix.rs/" class="navbar-brand">
+              <img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt="">
+            </a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#actix-main-nav" aria-label="Toggle navigation" aria-controls="actix-main-nav" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="actix-main-nav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item hd-lg-down">
+              <a class="navbar-brand" href="https://actix.rs/"><img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/docs/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/community/">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/code/">Code</a>
+            </li>
+            <li class="nav-item language-selector">
+              <i class="fa fa-fw fa-globe" aria-hidden="false"></i>
+              <ul class="subitem">
+              
+                <li class="submenu-item"><a href="https://actix.rs/">English</a></li>
+              
+              <li ><a href="https://ruster-xyz.github.io/server/Actix-web/whatisactix.html">中文</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+<div class="actix-pageheader">
+  <div class="container">
+    <h1 class="display-4">Static Files</h1>
+    
+  </div>
+</div>
+
+<div class="container actix-docs">
+  <div class="row">
+    <div class="col-md-3">
+
+      <button class="btn doctoggle" type="button" data-toggle="collapse" data-target="#collapsing-docnav" aria-expanded="false" aria-controls="collapsing-docnav">
+        Toggle navigation
+      </button>
+
+      <nav class="leftnav collapse show" id="collapsing-docnav">
+        <div class="" id="">
+          <h5>Introduction</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/">Welcome</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/whatis/">What is Actix</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/installation/">Installation</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Basics</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/getting-started/">Getting Started</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/application/">Application</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/server/">Server</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/handlers/">Handlers</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/extractors/">Extractors</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Advanced</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/errors/">Errors</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/url-dispatch/">URL Dispatch</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/request/">Requests</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/response/">Responses</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/testing/">Testing</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/middleware/">Middlewares</a>
+              </li>
+              
+              <li class="active">
+                <a href="https://actix.rs/docs/static-files/">Static Files</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Protocols</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/websockets/">Websockets</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/http2/">HTTP/2.0</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Patterns</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/autoreload/">Autoreloading</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/databases/">Databases</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/sentry/">Sentry</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>API Documentation</h5>
+          <div>
+            <ul class="nav">
+              <li><a href="https://docs.rs/actix" target="view_window">actix <span class="fa fa-external-link"></span></a></li>
+              <li><a href="https://actix.rs/api/actix-web/stable/actix_web/" target="view_window">actix-web <span class="fa fa-external-link"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <div class="col-md-9">
+      <div class="actix-content">
+        
+  
+
+<h1 id="individual-file">Individual file</h1>
+
+<p>It is possible to serve static files with a custom path pattern and <code>NamedFile</code>. To
+match a path tail, we can use a <code>[.*]</code> regex.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">actix_web</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">path</span>::<span class="n">PathBuf</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span>::<span class="n">Method</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span>::<span class="n">NamedFile</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">NamedFile</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span>: <span class="nc">PathBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">match_info</span><span class="p">().</span><span class="n">query</span><span class="p">(</span><span class="s">&#34;tail&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">NamedFile</span>::<span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">App</span>::<span class="n">new</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">resource</span><span class="p">(</span><span class="s">r&#34;/a/{tail:.*}&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">Method</span>::<span class="n">GET</span><span class="p">).</span><span class="n">f</span><span class="p">(</span><span class="n">index</span><span class="p">))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">finish</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<h1 id="directory">Directory</h1>
+
+<p>To serve files from specific directories and sub-directories, <code>StaticFiles</code> can be used.
+<code>StaticFiles</code> must be registered with an <code>App::handler()</code> method, otherwise
+it will be unable to serve sub-paths.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">actix_web</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">App</span>::<span class="n">new</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">handler</span><span class="p">(</span><span class="w">
+</span><span class="w">            </span><span class="s">&#34;/static&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="n">fs</span>::<span class="n">StaticFiles</span>::<span class="n">new</span><span class="p">(</span><span class="s">&#34;.&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">unwrap</span><span class="p">()</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">show_files_listing</span><span class="p">())</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">finish</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>The parameter is the base directory. By default files listing for sub-directories
+is disabled. Attempt to load directory listing will return <em>404 Not Found</em> response.
+To enable files listing, use
+<a href="../../actix-web/actix_web/fs/struct.StaticFiles.html#method.show_files_listing"><em>StaticFiles::show_files_listing()</em></a>
+method.</p>
+
+<p>Instead of showing files listing for directory, it is possible to redirect
+to a specific index file. Use the
+<a href="../../actix-web/actix_web/fs/struct.StaticFiles.html#method.index_file"><em>StaticFiles::index_file()</em></a>
+method to configure this redirect.</p>
+
+<h1 id="configuration">Configuration</h1>
+
+<p>Generic trait <code>StaticFileConfig</code> can be used to specify various options
+for serving files:</p>
+
+<ul>
+<li><code>content_disposition_map</code> - function to be used for mapping file&rsquo;s mime to corresponding <code>Content-Disposition</code> type</li>
+<li><code>is_use_etag</code> - specifies whether <code>ETag</code> shall be calculated and included in headers.</li>
+<li><code>is_use_last_modifier</code> - specifies whether file modified timestamp should be used and added to <code>Last-Modified</code> header.</li>
+<li><code>is_method_allowed</code> - allows to control which HTTP methods are allowed to be used when accessing file.</li>
+</ul>
+
+<p>All of the above methods are optional and provided with the best defaults.
+But it is possible to customize any of them by implementing the trait onto own struct.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">mime</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">actix_web</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span>::<span class="n">Method</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="n">fs</span>::<span class="p">{</span><span class="n">StaticFileConfig</span><span class="p">,</span><span class="w"> </span><span class="n">NamedFile</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="n">http</span>::<span class="n">header</span>::<span class="n">DispositionType</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">path</span>::<span class="n">PathBuf</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Default)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyConfig</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">StaticFileConfig</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">MyConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">content_disposition_map</span><span class="p">(</span><span class="n">typ</span>: <span class="nc">mime</span>::<span class="n">Name</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">DispositionType</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="n">DispositionType</span>::<span class="n">Attachment</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">NamedFile</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">path</span>: <span class="nc">PathBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">match_info</span><span class="p">().</span><span class="n">query</span><span class="p">(</span><span class="s">&#34;tail&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">NamedFile</span>::<span class="n">open_with_config</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">MyConfig</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">App</span>::<span class="n">new</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">resource</span><span class="p">(</span><span class="s">r&#34;/a/{tail:.*}&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">Method</span>::<span class="n">GET</span><span class="p">).</span><span class="n">f</span><span class="p">(</span><span class="n">index</span><span class="p">))</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">finish</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<p>The Configuration cal also be applied to directory service:</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">actix_web</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">};</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="n">fs</span>::<span class="p">{</span><span class="n">StaticFileConfig</span><span class="p">,</span><span class="w"> </span><span class="n">StaticFiles</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Default)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">MyConfig</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="w"> </span><span class="n">StaticFileConfig</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">MyConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">is_use_etag</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="k">fn</span> <span class="nf">is_use_last_modifier</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="kt">bool</span> <span class="p">{</span><span class="w">
+</span><span class="w">        </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">App</span>::<span class="n">new</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">.</span><span class="n">handler</span><span class="p">(</span><span class="w">
+</span><span class="w">            </span><span class="s">&#34;/static&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">            </span><span class="n">StaticFiles</span>::<span class="n">with_config</span><span class="p">(</span><span class="s">&#34;.&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">MyConfig</span><span class="p">).</span><span class="n">unwrap</span><span class="p">()</span><span class="w">
+</span><span class="w">                </span><span class="p">.</span><span class="n">show_files_listing</span><span class="p">()</span><span class="w">
+</span><span class="w">        </span><span class="p">).</span><span class="n">finish</span><span class="p">();</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+
+        <div class="github-edit">
+            <a class="fa fa-github" href="https://github.com/actix/actix-website/tree/master/content/docs/static-files.md"> Edit on GitHub</a>
+        </div>
+        
+        <div class="actix-next"><b>Next up</b>: <a href = /docs/websockets/>
+         Websockets</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="actix-footer">
+      <div class="text-muted actix-footer-gray d-flex justify-content-between">
+        <div class="actix-footer-info">
+          Copyright © 2018 The Actix Team
+        </div>
+        <div class="actix-footer-social">
+          <a href="https://github.com/actix" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://actix.rs/js/bootstrap.min.js"></script>
+    <script src="https://actix.rs/js/actix.js"></script>
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110322332-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

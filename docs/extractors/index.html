@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap.css">
+    <link rel="stylesheet" href="https://actix.rs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://actix.rs/css/actix.css">
+    <link rel="stylesheet" href="https://actix.rs/css/highlight.css">
+    <link rel="icon" href="https://actix.rs/favicon.ico" title="actix">
+
+    <title>Extractors</title>
+  </head>
+  <body>
+    <header class="navbar navbar-light navbar-toggleable-md bd-navbar">
+      <nav class="actix-main-nav">
+        <div class="d-flex justify-content-between hidden-lg-up">
+            <a href="https://actix.rs/" class="navbar-brand">
+              <img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt="">
+            </a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#actix-main-nav" aria-label="Toggle navigation" aria-controls="actix-main-nav" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="actix-main-nav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item hd-lg-down">
+              <a class="navbar-brand" href="https://actix.rs/"><img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/docs/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/community/">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/code/">Code</a>
+            </li>
+            <li class="nav-item language-selector">
+              <i class="fa fa-fw fa-globe" aria-hidden="false"></i>
+              <ul class="subitem">
+              
+                <li class="submenu-item"><a href="https://actix.rs/">English</a></li>
+              
+              <li ><a href="https://ruster-xyz.github.io/server/Actix-web/whatisactix.html">中文</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+<div class="actix-pageheader">
+  <div class="container">
+    <h1 class="display-4">Extractors</h1>
+    
+  </div>
+</div>
+
+<div class="container actix-docs">
+  <div class="row">
+    <div class="col-md-3">
+
+      <button class="btn doctoggle" type="button" data-toggle="collapse" data-target="#collapsing-docnav" aria-expanded="false" aria-controls="collapsing-docnav">
+        Toggle navigation
+      </button>
+
+      <nav class="leftnav collapse show" id="collapsing-docnav">
+        <div class="" id="">
+          <h5>Introduction</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/">Welcome</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/whatis/">What is Actix</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/installation/">Installation</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Basics</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/getting-started/">Getting Started</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/application/">Application</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/server/">Server</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/handlers/">Handlers</a>
+              </li>
+              
+              <li class="active">
+                <a href="https://actix.rs/docs/extractors/">Extractors</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Advanced</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/errors/">Errors</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/url-dispatch/">URL Dispatch</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/request/">Requests</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/response/">Responses</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/testing/">Testing</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/middleware/">Middlewares</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/static-files/">Static Files</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Protocols</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/websockets/">Websockets</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/http2/">HTTP/2.0</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Patterns</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/autoreload/">Autoreloading</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/databases/">Databases</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/sentry/">Sentry</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>API Documentation</h5>
+          <div>
+            <ul class="nav">
+              <li><a href="https://docs.rs/actix" target="view_window">actix <span class="fa fa-external-link"></span></a></li>
+              <li><a href="https://actix.rs/api/actix-web/stable/actix_web/" target="view_window">actix-web <span class="fa fa-external-link"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <div class="col-md-9">
+      <div class="actix-content">
+        
+  
+
+<h1 id="type-safe-information-extraction">Type-safe information extraction</h1>
+
+<p>Actix provides facility for type-safe request information extraction. By default,
+actix provides several extractor implementations.</p>
+
+<h1 id="accessing-extractors">Accessing Extractors</h1>
+
+<p>How you access an Extractor depends on whether you are using a handler function
+or a custom Handler type.</p>
+
+<h2 id="within-handler-functions">Within Handler Functions</h2>
+
+<p>An Extractor can be passed to a handler function as a function parameter
+<em>or</em> accessed within the function by calling the ExtractorType::&lt;&hellip;&gt;::extract(req)
+function.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="c1">// Option 1:  passed as a parameter to a handler function
+</span><span class="c1"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">((</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">)</span>: <span class="p">(</span><span class="n">Path</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">,)</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="o">&lt;</span><span class="n">MyInfo</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">   </span><span class="p">...</span><span class="w"> 
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// Option 2:  accessed by calling extract() on the Extractor
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="n">FromRequest</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">HttpResponse</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">	</span><span class="kd">let</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span>::<span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="o">&gt;</span>::<span class="n">extract</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w">
+</span><span class="w">	</span><span class="kd">let</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Json</span>::<span class="o">&lt;</span><span class="n">MyInfo</span><span class="o">&gt;</span>::<span class="n">extract</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w"> 
+</span><span class="w">
+</span><span class="w">	</span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<h2 id="within-custom-handler-types">Within Custom Handler Types</h2>
+
+<p>Like a handler function, a custom Handler type can <em>access</em> an Extractor by
+calling the ExtractorType::&lt;&hellip;&gt;::extract(&amp;req) function.  An Extractor
+<em>cannot</em> be passed as a parameter to a custom Handler type because a custom
+Handler type must follow the <code>handle</code> function signature specified by the
+Handler trait it implements.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">struct</span> <span class="nc">MyHandler</span><span class="p">(</span><span class="nb">String</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Handler</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">MyHandler</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="k">type</span> <span class="nb">Result</span> <span class="o">=</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span><span class="sd">/// Handle request
+</span><span class="sd"></span><span class="w">    </span><span class="k">fn</span> <span class="nf">handle</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">req</span>: <span class="kp">&amp;</span><span class="nc">HttpRequest</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="nb">Result</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">		</span><span class="kd">let</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span>::<span class="o">&lt;</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="o">&gt;</span>::<span class="n">extract</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w">
+</span><span class="w">		</span><span class="kd">let</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Json</span>::<span class="o">&lt;</span><span class="n">MyInfo</span><span class="o">&gt;</span>::<span class="n">extract</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w"> 
+</span><span class="w">
+</span><span class="w">		</span><span class="p">...</span><span class="w">
+</span><span class="w">			
+</span><span class="w">        </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">().</span><span class="n">into</span><span class="p">()</span><span class="w">
+</span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<h1 id="path">Path</h1>
+
+<p><a href="../../actix-web/actix_web/struct.Path.html"><em>Path</em></a> provides information that can
+be extracted from the Request&rsquo;s path. You can deserialize any variable
+segment from the path.</p>
+
+<p>For instance, for resource that registered for the <code>/users/{userid}/{friend}</code> path
+two segments could be deserialized, <code>userid</code> and <code>friend</code>. These segments
+could be extracted into a <code>tuple</code>, i.e. <code>Path&lt;(u32, String)&gt;</code> or any structure
+that implements the <code>Deserialize</code> trait from the <em>serde</em> crate.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="sd">/// extract path info from &#34;/users/{userid}/{friend}&#34; url
+</span><span class="sd">/// {userid} -  - deserializes to a u32
+</span><span class="sd">/// {friend} - deserializes to a String
+</span><span class="sd"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">info</span>: <span class="nc">Path</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">u32</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}! {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="mi">0</span><span class="p">))</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">        </span><span class="s">&#34;/users/{userid}/{friend}&#34;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// &lt;- define path parameters
+</span><span class="c1"></span><span class="w">        </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">GET</span><span class="p">).</span><span class="n">with</span><span class="p">(</span><span class="n">index</span><span class="p">));</span><span class="w">  </span><span class="c1">// &lt;- use `with` extractor
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<p>Remember! A handler function that uses extractors has to be registered using the
+<a href="../../actix-web/actix_web/dev/struct.Route.html#method.with"><em>Route::with()</em></a> method.</p>
+
+<p>It is also possible to extract path information to a specific type that
+implements the <code>Deserialize</code> trait from <em>serde</em>. Here is an equivalent example that uses <em>serde</em>
+instead of a <em>tuple</em> type.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">userid</span>: <span class="kt">u32</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="n">friend</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="sd">/// extract path info using serde
+</span><span class="sd"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">info</span>: <span class="nc">Path</span><span class="o">&lt;</span><span class="n">Info</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">     </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">friend</span><span class="p">))</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">       </span><span class="s">&#34;/users/{userid}/{friend}&#34;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// &lt;- define path parameters
+</span><span class="c1"></span><span class="w">       </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">GET</span><span class="p">).</span><span class="n">with</span><span class="p">(</span><span class="n">index</span><span class="p">));</span><span class="w">  </span><span class="c1">// &lt;- use `with` extractor
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<h1 id="query">Query</h1>
+
+<p>Same can be done with the request&rsquo;s query.
+The <a href="../../actix-web/actix_web/struct.Query.html"><em>Query</em></a>
+type provides extraction functionality. Underneath it uses <em>serde_urlencoded</em> crate.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Query</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">// this handler get called only if the request&#39;s query contains `username` field
+</span><span class="c1"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">info</span>: <span class="nc">Query</span><span class="o">&lt;</span><span class="n">Info</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">String</span> <span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">username</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">       </span><span class="s">&#34;/index.html&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">       </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">GET</span><span class="p">).</span><span class="n">with</span><span class="p">(</span><span class="n">index</span><span class="p">));</span><span class="w"> </span><span class="c1">// &lt;- use `with` extractor
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<h1 id="json">Json</h1>
+
+<p><a href="../../actix-web/actix_web/struct.Json.html"><em>Json</em></a> allows to deserialize
+a request body into a struct. To extract typed information from a request&rsquo;s body,
+the type <code>T</code> must implement the <code>Deserialize</code> trait from <em>serde</em>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="sd">/// deserialize `Info` from request&#39;s body
+</span><span class="sd"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">info</span>: <span class="nc">Json</span><span class="o">&lt;</span><span class="n">Info</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">username</span><span class="p">))</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">       </span><span class="s">&#34;/index.html&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">       </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">POST</span><span class="p">).</span><span class="n">with</span><span class="p">(</span><span class="n">index</span><span class="p">));</span><span class="w">  </span><span class="c1">// &lt;- use `with` extractor
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<p>Some extractors provide a way to configure the extraction process. Json extractor
+<a href="../../actix-web/actix_web/dev/struct.JsonConfig.html"><em>JsonConfig</em></a> type for configuration.
+When you register a handler using <code>Route::with()</code>, it returns a configuration instance. In case of
+a <em>Json</em> extractor it returns a <em>JsonConfig</em>. You can configure the maximum size of the json
+payload as well as a custom error handler function.</p>
+
+<p>The following example limits the size of the payload to 4kb and uses a custom error handler.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Json</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="sd">/// deserialize `Info` from request&#39;s body, max payload size is 4kb
+</span><span class="sd"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">info</span>: <span class="nc">Json</span><span class="o">&lt;</span><span class="n">Info</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="n">username</span><span class="p">))</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">       </span><span class="s">&#34;/index.html&#34;</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">           </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">POST</span><span class="p">)</span><span class="w">
+</span><span class="w">              </span><span class="p">.</span><span class="n">with_config</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">cfg</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">                  </span><span class="n">cfg</span><span class="p">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span><span class="w">   </span><span class="c1">// &lt;- change json extractor configuration
+</span><span class="c1"></span><span class="w">                  </span><span class="n">cfg</span><span class="p">.</span><span class="n">error_handler</span><span class="p">(</span><span class="o">|</span><span class="n">err</span><span class="p">,</span><span class="w"> </span><span class="n">req</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// &lt;- create custom error response
+</span><span class="c1"></span><span class="w">                      </span><span class="n">error</span>::<span class="n">InternalError</span>::<span class="n">from_response</span><span class="p">(</span><span class="w">
+</span><span class="w">                         </span><span class="n">err</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">Conflict</span><span class="p">().</span><span class="n">finish</span><span class="p">()).</span><span class="n">into</span><span class="p">()</span><span class="w">
+</span><span class="w">              </span><span class="p">})</span><span class="w">
+</span><span class="w">           </span><span class="p">});</span><span class="w">
+</span><span class="w">       </span><span class="p">});</span><span class="w">
+</span><span class="w"></span><span class="p">}</span></code></pre></div>
+<h1 id="form">Form</h1>
+
+<p>At the moment only url-encoded forms are supported. The url-encoded body
+could be extracted to a specific type. This type must implement
+the <code>Deserialize</code> trait from the <em>serde</em> crate.</p>
+
+<p><a href="../../actix-web/actix_web/dev/struct.FormConfig.html"><em>FormConfig</em></a> allows
+configuring the extraction process.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Form</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">FormData</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="sd">/// extract form data using serde
+</span><span class="sd">/// this handler gets called only if the content type is *x-www-form-urlencoded*
+</span><span class="sd">/// and the content of the request could be deserialized to a `FormData` struct
+</span><span class="sd"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">form</span>: <span class="nc">Form</span><span class="o">&lt;</span><span class="n">FormData</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">     </span><span class="nb">Ok</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">.</span><span class="n">username</span><span class="p">))</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="err">#</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span></code></pre></div>
+<h1 id="multiple-extractors">Multiple extractors</h1>
+
+<p>Actix provides extractor implementations for tuples (up to 10 elements)
+whose elements implement <code>FromRequest</code>.</p>
+
+<p>For example we can use a path extractor and a query extractor at the same time.</p>
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="cp">#[macro_use]</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="k">crate</span><span class="w"> </span><span class="n">serde_derive</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Query</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">};</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="cp">#[derive(Deserialize)]</span><span class="w">
+</span><span class="w"></span><span class="k">struct</span> <span class="nc">Info</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">username</span>: <span class="nb">String</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">index</span><span class="p">((</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">)</span>: <span class="p">(</span><span class="n">Path</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">u32</span><span class="p">,</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Query</span><span class="o">&lt;</span><span class="n">Info</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span>-&gt; <span class="nb">String</span> <span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Welcome {}!&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">.</span><span class="n">username</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">().</span><span class="n">resource</span><span class="p">(</span><span class="w">
+</span><span class="w">       </span><span class="s">&#34;/users/{userid}/{friend}&#34;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// &lt;- define path parameters
+</span><span class="c1"></span><span class="w">       </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">GET</span><span class="p">).</span><span class="n">with</span><span class="p">(</span><span class="n">index</span><span class="p">));</span><span class="w"> </span><span class="c1">// &lt;- use `with` extractor
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<h1 id="other">Other</h1>
+
+<p>Actix also provides several other extractors:</p>
+
+<ul>
+<li><a href="../../actix-web/actix_web/struct.State.html"><em>State</em></a> - If you need
+access to an application state. This is similar to a <code>HttpRequest::state()</code>.</li>
+<li><em>HttpRequest</em> - <em>HttpRequest</em> itself is an extractor which returns self,
+in case you need access to the request.</li>
+<li><em>String</em> - You can convert a request&rsquo;s payload to a <em>String</em>.
+<a href="../../actix-web/actix_web/trait.FromRequest.html#example-1"><em>Example</em></a>
+is available in doc strings.</li>
+<li><em>bytes::Bytes</em> - You can convert a request&rsquo;s payload into <em>Bytes</em>.
+<a href="../../actix-web/actix_web/trait.FromRequest.html#example"><em>Example</em></a>
+is available in doc strings.</li>
+</ul>
+
+
+        <div class="github-edit">
+            <a class="fa fa-github" href="https://github.com/actix/actix-website/tree/master/content/docs/extractors.md"> Edit on GitHub</a>
+        </div>
+        
+        <div class="actix-next"><b>Next up</b>: <a href = /docs/errors/>
+         Errors</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="actix-footer">
+      <div class="text-muted actix-footer-gray d-flex justify-content-between">
+        <div class="actix-footer-info">
+          Copyright © 2018 The Actix Team
+        </div>
+        <div class="actix-footer-social">
+          <a href="https://github.com/actix" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://actix.rs/js/bootstrap.min.js"></script>
+    <script src="https://actix.rs/js/actix.js"></script>
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110322332-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
