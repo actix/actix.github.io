@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="https://actix.rs/css/bootstrap.css">
+    <link rel="stylesheet" href="https://actix.rs/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://actix.rs/css/actix.css">
+    <link rel="stylesheet" href="https://actix.rs/css/highlight.css">
+    <link rel="icon" href="https://actix.rs/favicon.ico" title="actix">
+
+    <title>Middlewares</title>
+  </head>
+  <body>
+    <header class="navbar navbar-light navbar-toggleable-md bd-navbar">
+      <nav class="actix-main-nav">
+        <div class="d-flex justify-content-between hidden-lg-up">
+            <a href="https://actix.rs/" class="navbar-brand">
+              <img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt="">
+            </a>
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#actix-main-nav" aria-label="Toggle navigation" aria-controls="actix-main-nav" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="actix-main-nav">
+          <ul class="nav navbar-nav">
+            <li class="nav-item hd-lg-down">
+              <a class="navbar-brand" href="https://actix.rs/"><img src="https://actix.rs/img/logo-nav.png" class="align-middle" alt=""></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/docs/">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/community/">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://actix.rs/code/">Code</a>
+            </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
+<div class="actix-pageheader">
+  <div class="container">
+    <h1 class="display-4">Middlewares</h1>
+    
+  </div>
+</div>
+
+<div class="container actix-docs">
+  <div class="row">
+    <div class="col-md-3">
+
+      <button class="btn doctoggle" type="button" data-toggle="collapse" data-target="#collapsing-docnav" aria-expanded="false" aria-controls="collapsing-docnav">
+        Toggle navigation
+      </button>
+
+      <nav class="leftnav collapse show" id="collapsing-docnav">
+        <div class="" id="">
+          <h5>Introduction</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/">Welcome</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/whatis/">What is Actix</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/installation/">Installation</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Basics</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/getting-started/">Getting Started</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/application/">Application</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/server/">Server</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/handlers/">Handlers</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/extractors/">Extractors</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Advanced</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/errors/">Errors</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/url-dispatch/">URL Dispatch</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/request/">Requests</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/response/">Responses</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/testing/">Testing</a>
+              </li>
+              
+              <li class="active">
+                <a href="https://actix.rs/docs/middleware/">Middlewares</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/static-files/">Static Files</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Protocols</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/websockets/">Websockets</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/http2/">HTTP/2.0</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Patterns</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/autoreload/">Autoreloading</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/databases/">Databases</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>Diagrams</h5>
+          <div>
+            <ul class="nav">
+              
+              <li>
+                <a href="https://actix.rs/docs/http_server_init/">Http Server Initialization</a>
+              </li>
+              
+              <li>
+                <a href="https://actix.rs/docs/conn_lifecycle/">Connection Lifecycle</a>
+              </li>
+              
+            </ul>
+          </div>
+
+          <h5>API Documentation</h5>
+          <div>
+            <ul class="nav">
+              <li><a href="https://docs.rs/actix" target="view_window">actix <span class="fa fa-external-link"></span></a></li>
+              <li><a href="https://docs.rs/actix-web/" target="view_window">actix-web <span class="fa fa-external-link"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+    <div class="col-md-9">
+      <div class="actix-content">
+        
+  <h1 id="middleware">Middleware</h1>
+<p>Actix-web's middleware system allows us to add additional behavior to request/response
+processing.  Middleware can hook into an incoming request process, enabling us to modify
+requests as well as halt request processing to return a response early.</p>
+<p>Middleware can also hook into response processing.</p>
+<p>Typically, middleware is involved in the following actions:</p>
+<ul>
+<li>Pre-process the Request</li>
+<li>Post-process a Response</li>
+<li>Modify application state</li>
+<li>Access external services (redis, logging, sessions)</li>
+</ul>
+<p>Middleware is registered for each <code>App</code>, <code>scope</code>, or <code>Resource</code> and executed in opposite
+order as registration.  In general, a <em>middleware</em> is a type that implements the
+<a href="https://docs.rs/actix-web/2/actix_web/dev/trait.Service.html"><em>Service trait</em></a> and <a href="https://docs.rs/actix-web/2/actix_web/dev/trait.Transform.html"><em>Transform trait</em></a>.  Each method in
+the traits has a default implementation. Each method can return a result immediately
+or a <em>future</em> object.</p>
+<p>The following demonstrates creating a simple middleware:</p>
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">pin</span>::<span class="n">Pin</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">task</span>::<span class="p">{</span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">Poll</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_service</span>::<span class="p">{</span><span class="n">Service</span><span class="p">,</span><span class="w"> </span><span class="n">Transform</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">dev</span>::<span class="n">ServiceRequest</span><span class="p">,</span><span class="w"> </span><span class="n">dev</span>::<span class="n">ServiceResponse</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="n">future</span>::<span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="n">Ready</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="n">Future</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="c1">// There are two steps in middleware processing.
+</span><span class="c1"></span><span class="c1">// 1. Middleware initialization, middleware factory gets called with
+</span><span class="c1"></span><span class="c1">//    next service in chain as parameter.
+</span><span class="c1"></span><span class="c1">// 2. Middleware&#39;s call method gets called with normal request.
+</span><span class="c1"></span><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">SayHi</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="c1">// Middleware factory is `Transform` trait from actix-service crate
+</span><span class="c1"></span><span class="c1">// `S` - type of the next service
+</span><span class="c1"></span><span class="c1">// `B` - type of response&#39;s body
+</span><span class="c1"></span><span class="k">impl</span><span class="o">&lt;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Transform</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">SayHi</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">S</span>: <span class="nc">Service</span><span class="o">&lt;</span><span class="n">Request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceRequest</span><span class="p">,</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Error</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">S</span>::<span class="n">Future</span>: <span class="nb">&#39;static</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">B</span>: <span class="nb">&#39;static</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceRequest</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Error</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">InitError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Transform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SayHiMiddleware</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ready</span><span class="o">&lt;</span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span>::<span class="n">Transform</span><span class="p">,</span><span class="w"> </span><span class="n">Self</span>::<span class="n">InitError</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">fn</span> <span class="nf">new_transform</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">service</span>: <span class="nc">S</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Future</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">ok</span><span class="p">(</span><span class="n">SayHiMiddleware</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">SayHiMiddleware</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">service</span>: <span class="nc">S</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="k">impl</span><span class="o">&lt;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Service</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">SayHiMiddleware</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">S</span>: <span class="nc">Service</span><span class="o">&lt;</span><span class="n">Request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceRequest</span><span class="p">,</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Error</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">S</span>::<span class="n">Future</span>: <span class="nb">&#39;static</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">B</span>: <span class="nb">&#39;static</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceRequest</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Error</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">type</span> <span class="nc">Future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pin</span><span class="o">&lt;</span><span class="nb">Box</span><span class="o">&lt;</span><span class="n">dyn</span><span class="w"> </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">Output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Self</span>::<span class="n">Response</span><span class="p">,</span><span class="w"> </span><span class="n">Self</span>::<span class="n">Error</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">fn</span> <span class="nf">poll_ready</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">cx</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">Context</span><span class="o">&lt;</span><span class="na">&#39;_</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Poll</span><span class="o">&lt;</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="p">)</span><span class="p">,</span><span class="w"> </span><span class="n">Self</span>::<span class="n">Error</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">poll_ready</span><span class="p">(</span><span class="n">cx</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">fn</span> <span class="nf">call</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">req</span>: <span class="nc">ServiceRequest</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span>::<span class="n">Future</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Hi from start. You requested: {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">fut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">service</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="nb">Box</span>::<span class="n">pin</span><span class="p">(</span><span class="n">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fut</span><span class="p">.</span><span class="n">await</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Hi from response&#34;</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Alternatively, for simple use cases, you can use <a href="https://docs.rs/actix-web/2/actix_web/struct.App.html#method.wrap_fn"><em>wrap_fn</em></a> to create small, ad-hoc middlewares:</p>
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_service</span>::<span class="n">Service</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">futures</span>::<span class="n">future</span>::<span class="n">FutureExt</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="cp">#[</span><span class="cp">actix_rt::main</span><span class="cp">]</span><span class="w">
+</span><span class="w"></span><span class="n">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="p">.</span><span class="n">wrap_fn</span><span class="p">(</span><span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">srv</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Hi from start. You requested: {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">path</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="n">srv</span><span class="p">.</span><span class="n">call</span><span class="p">(</span><span class="n">req</span><span class="p">)</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">res</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&#34;Hi from response&#34;</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="n">res</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="s">&#34;/index.html&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="n">web</span>::<span class="n">get</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="s">&#34;Hello, middleware!&#34;</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">}</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Actix-web provides several useful middlewares, such as <em>logging</em>, <em>user sessions</em>,
+<em>compress</em>, etc.</p>
+</blockquote>
+<h1 id="logging">Logging</h1>
+<p>Logging is implemented as a middleware.  It is common to register a logging middleware
+as the first middleware for the application.  Logging middleware must be registered for
+each application.</p>
+<p>The <code>Logger</code> middleware uses the standard log crate to log information. You should enable logger
+for <em>actix_web</em> package to see access log (<a href="https://docs.rs/env_logger/*/env_logger/">env_logger</a> or similar).</p>
+<h2 id="usage">Usage</h2>
+<p>Create <code>Logger</code> middleware with the specified <code>format</code>.  Default <code>Logger</code> can be created
+with <code>default</code> method, it uses the default format:</p>
+<pre><code class="language-ignore" data-lang="ignore">  %a %t &quot;%r&quot; %s %b &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot; %T
+</code></pre>
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="n">middleware</span>::<span class="n">Logger</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">env_logger</span>::<span class="n">Env</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="cp">#[</span><span class="cp">actix_rt::main</span><span class="cp">]</span><span class="w">
+</span><span class="w"></span><span class="n">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">std</span>::<span class="n">io</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServer</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">env_logger</span>::<span class="n">from_env</span><span class="p">(</span><span class="n">Env</span>::<span class="n">default</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">default_filter_or</span><span class="p">(</span><span class="s">&#34;info&#34;</span><span class="p">)</span><span class="p">)</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">HttpServer</span>::<span class="n">new</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">App</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">Logger</span>::<span class="n">default</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">Logger</span>::<span class="n">new</span><span class="p">(</span><span class="s">&#34;%a %{User-Agent}i&#34;</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&#34;127.0.0.1:8088&#34;</span><span class="p">)</span><span class="o">?</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">await</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The following is an example of the default logging format:</p>
+<pre><code>INFO:actix_web::middleware::logger: 127.0.0.1:59934 [02/Dec/2017:00:21:43 -0800] &quot;GET / HTTP/1.1&quot; 302 0 &quot;-&quot; &quot;curl/7.54.0&quot; 0.000397
+INFO:actix_web::middleware::logger: 127.0.0.1:59947 [02/Dec/2017:00:22:40 -0800] &quot;GET /index.html HTTP/1.1&quot; 200 0 &quot;-&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0&quot; 0.000646
+</code></pre><h2 id="format">Format</h2>
+<ul>
+<li><code>%%</code>  The percent sign</li>
+<li><code>%a</code>  Remote IP-address (IP-address of proxy if using reverse proxy)</li>
+<li><code>%t</code>  Time when the request was started to process</li>
+<li><code>%P</code>  The process ID of the child that serviced the request</li>
+<li><code>%r</code>  First line of request</li>
+<li><code>%s</code>  Response status code</li>
+<li><code>%b</code>  Size of response in bytes, including HTTP headers</li>
+<li><code>%T</code>  Time taken to serve the request, in seconds with floating fraction in .06f format</li>
+<li><code>%D</code>  Time taken to serve the request, in milliseconds</li>
+<li><code>%{FOO}i</code>  request.headers[&lsquo;FOO&rsquo;]</li>
+<li><code>%{FOO}o</code>  response.headers[&lsquo;FOO&rsquo;]</li>
+<li><code>%{FOO}e</code>  os.environ[&lsquo;FOO&rsquo;]</li>
+</ul>
+<h2 id="default-headers">Default headers</h2>
+<p>To set default response headers, the <code>DefaultHeaders</code> middleware can be used. The
+<em>DefaultHeaders</em> middleware does not set the header if response headers already contain
+a specified header.</p>
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">middleware</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="cp">#[</span><span class="cp">actix_rt::main</span><span class="cp">]</span><span class="w">
+</span><span class="w"></span><span class="n">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">std</span>::<span class="n">io</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServer</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">HttpServer</span>::<span class="n">new</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">App</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">middleware</span>::<span class="n">DefaultHeaders</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">header</span><span class="p">(</span><span class="s">&#34;X-Version&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;0.2&#34;</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">service</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="n">web</span>::<span class="n">resource</span><span class="p">(</span><span class="s">&#34;/test&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">                    </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="n">web</span>::<span class="n">get</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">                    </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">                        </span><span class="n">web</span>::<span class="n">method</span><span class="p">(</span><span class="n">http</span>::<span class="n">Method</span>::<span class="n">HEAD</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">                            </span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">MethodNotAllowed</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">                    </span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&#34;127.0.0.1:8088&#34;</span><span class="p">)</span><span class="o">?</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">await</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h2 id="user-sessions">User sessions</h2>
+<p>Actix-web provides a general solution for session management. The
+<a href="https://docs.rs/actix-session/0.3.0/actix_session/"><strong>actix-session</strong></a> middleware can be used with different backend types
+to store session data in different backends.</p>
+<blockquote>
+<p>By default, only cookie session backend is implemented. Other backend implementations
+can be added.</p>
+</blockquote>
+<p><a href="https://docs.rs/actix-session/0.3.0/actix_session/struct.CookieSession.html"><strong>CookieSession</strong></a> uses cookies as session storage. <code>CookieSessionBackend</code>
+creates sessions which are limited to storing fewer than 4000 bytes of data, as the payload
+must fit into a single cookie. An internal server error is generated if a session
+contains more than 4000 bytes.</p>
+<p>A cookie may have a security policy of <em>signed</em> or <em>private</em>. Each has a respective
+<code>CookieSession</code> constructor.</p>
+<p>A <em>signed</em> cookie may be viewed but not modified by the client. A <em>private</em> cookie may
+neither be viewed nor modified by the client.</p>
+<p>The constructors take a key as an argument. This is the private key for cookie session -
+when this value is changed, all session data is lost.</p>
+<p>In general, you create a <code>SessionStorage</code> middleware and initialize it with specific
+backend implementation, such as a <code>CookieSession</code>. To access session data the
+<a href="https://docs.rs/actix-session/0.3.0/actix_session/struct.Session.html"><code>Session</code></a> extractor must be used. This method returns a
+<a href="https://docs.rs/actix-session/0.3.0/actix_session/struct.Session.html"><em>Session</em></a> object, which allows us to get or set session data.</p>
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_session</span>::<span class="p">{</span><span class="n">CookieSession</span><span class="p">,</span><span class="w"> </span><span class="n">Session</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServer</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="n">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">index</span><span class="p">(</span><span class="n">session</span>: <span class="nc">Session</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="c1">// access session data
+</span><span class="c1"></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="n">get</span>::<span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;counter&#34;</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#34;counter&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#34;counter&#34;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="n">format</span><span class="o">!</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="s">&#34;Count is {:?}!&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">session</span><span class="p">.</span><span class="n">get</span>::<span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;counter&#34;</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">unwrap</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="cp">#[</span><span class="cp">actix_rt::main</span><span class="cp">]</span><span class="w">
+</span><span class="w"></span><span class="n">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">std</span>::<span class="n">io</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">HttpServer</span>::<span class="n">new</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">App</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">wrap</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="n">CookieSession</span>::<span class="n">signed</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">32</span><span class="p">]</span><span class="p">)</span><span class="w"> </span><span class="c1">// &lt;- create cookie based session middleware
+</span><span class="c1"></span><span class="w">                    </span><span class="p">.</span><span class="n">secure</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">service</span><span class="p">(</span><span class="n">web</span>::<span class="n">resource</span><span class="p">(</span><span class="s">&#34;/&#34;</span><span class="p">)</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&#34;127.0.0.1:8088&#34;</span><span class="p">)</span><span class="o">?</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">await</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h1 id="error-handlers">Error handlers</h1>
+<p><code>ErrorHandlers</code> middleware allows us to provide custom handlers for responses.</p>
+<p>You can use the <code>ErrorHandlers::handler()</code> method to register a custom error handler
+for a specific status code. You can modify an existing response or create a completly new
+one. The error handler can return a response immediately or return a future that resolves
+into a response.</p>
+
+
+
+
+
+<div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="n">middleware</span>::<span class="n">errhandlers</span>::<span class="p">{</span><span class="n">ErrorHandlerResponse</span><span class="p">,</span><span class="w"> </span><span class="n">ErrorHandlers</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">http</span><span class="p">,</span><span class="w"> </span><span class="n">HttpResponse</span><span class="p">,</span><span class="w"> </span><span class="nb">Result</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="k">fn</span> <span class="nf">render_500</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">res</span>: <span class="nc">dev</span>::<span class="n">ServiceResponse</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">ErrorHandlerResponse</span><span class="o">&lt;</span><span class="n">B</span><span class="o">&gt;</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">res</span><span class="p">.</span><span class="n">response_mut</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">headers_mut</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">http</span>::<span class="n">header</span>::<span class="n">CONTENT_TYPE</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">http</span>::<span class="n">HeaderValue</span>::<span class="n">from_static</span><span class="p">(</span><span class="s">&#34;Error&#34;</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">)</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">ErrorHandlerResponse</span>::<span class="n">Response</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="cp">#[</span><span class="cp">actix_rt::main</span><span class="cp">]</span><span class="w">
+</span><span class="w"></span><span class="n">async</span><span class="w"> </span><span class="k">fn</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">std</span>::<span class="n">io</span>::<span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="n">actix_web</span>::<span class="p">{</span><span class="n">web</span><span class="p">,</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServer</span><span class="p">}</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="n">HttpServer</span>::<span class="n">new</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="w"></span><span class="w">        </span><span class="n">App</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">wrap</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="n">ErrorHandlers</span>::<span class="n">new</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">                    </span><span class="p">.</span><span class="n">handler</span><span class="p">(</span><span class="n">http</span>::<span class="n">StatusCode</span>::<span class="n">INTERNAL_SERVER_ERROR</span><span class="p">,</span><span class="w"> </span><span class="n">render_500</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">.</span><span class="n">service</span><span class="p">(</span><span class="w">
+</span><span class="w"></span><span class="w">                </span><span class="n">web</span>::<span class="n">resource</span><span class="p">(</span><span class="s">&#34;/test&#34;</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">                    </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="n">web</span>::<span class="n">get</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="nb">Ok</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">                    </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="n">web</span>::<span class="n">head</span><span class="p">(</span><span class="p">)</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="o">|</span><span class="o">|</span><span class="w"> </span><span class="n">HttpResponse</span>::<span class="n">MethodNotAllowed</span><span class="p">(</span><span class="p">)</span><span class="p">)</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span><span class="w"></span><span class="w">            </span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">}</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="s">&#34;127.0.0.1:8088&#34;</span><span class="p">)</span><span class="o">?</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="w">    </span><span class="p">.</span><span class="n">await</span><span class="w">
+</span><span class="w"></span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+
+        <div class="github-edit">
+            <a class="fa fa-github" href="https://github.com/actix/actix-website/tree/master/content/docs/middleware.md"> Edit on GitHub</a>
+        </div>
+
+        
+            
+        
+
+        
+
+        
+            <div class="actix-next"><b>Next up</b>: <a href = /docs/static-files/>Static Files</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="actix-footer">
+      <div class="text-muted actix-footer-gray d-flex justify-content-between">
+        <div class="actix-footer-info">
+          Copyright © 2020 The Actix Team
+        </div>
+        <div class="actix-footer-social">
+          <a href="https://github.com/actix" class="text-muted"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://actix.rs/js/bootstrap.min.js"></script>
+    <script src="https://actix.rs/js/actix.js"></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-110322332-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  </body>
+</html>
+
