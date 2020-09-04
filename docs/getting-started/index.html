@@ -36,9 +36,9 @@ accepts a function that should return an application factory.</p><div class=high
 </span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>That&rsquo;s it! Now, compile and run the program with <code>cargo run</code>.
-Head over to <code>http://localhost:8088/</code> to see the results.</p><p><strong>Note</strong>: You could notice <code>#[actix_rt::main]</code> attribute macro. This
-macro executes marked async function in actix runtime. Any async function
-could be marked and executed by this macro.</p><h3 id=using-attribute-macros-to-define-routes>Using Attribute Macros to Define Routes</h3><p>Alternatively, you can define routes using macro attributes which
+Head over to <code>http://localhost:8088/</code> to see the results.</p><p><strong>Note</strong>: You may have noticed the <code>#[actix_rt::main]</code> attribute macro. This
+macro executes the associated async function within the actix runtime.
+Any async function could be marked and executed by this macro.</p><h3 id=using-attribute-macros-to-define-routes>Using Attribute Macros to Define Routes</h3><p>Alternatively, you can define routes using macro attributes which
 allow you to specify the routes above your functions like so:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=n>get</span><span class=p>;</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/hello&#34;</span><span class=cp>)]</span><span class=w>
