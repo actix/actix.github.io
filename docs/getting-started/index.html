@@ -8,7 +8,7 @@ such, this guide assumes you are running Rust 1.42 or later.</p><h2 id=hello-wor
 <span class=nb>cd</span> hello-world
 </code></pre></div><p>Add <code>actix-web</code> as a dependency of your project by adding the following to your <code>Cargo.toml</code> file.</p><div class=highlight><pre class=chroma><code class=language-toml data-lang=toml><span class=p>[</span><span class=nx>dependencies</span><span class=p>]</span>
 <span class=nx>actix</span><span class=err>-</span><span class=nx>web</span> <span class=p>=</span> <span class=s2>&#34;3&#34;</span>
-</code></pre></div><p>Request handlers use an async functions that accept zero or more parameters. These parameters can be
+</code></pre></div><p>Request handlers use async functions that accept zero or more parameters. These parameters can be
 extracted from a request (see <code>FromRequest</code> trait) and returns a type that can be converted into an
 <code>HttpResponse</code> (see <code>Responder</code> trait):</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>post</span><span class=p>,</span><span class=w> </span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>,</span><span class=w> </span><span class=n>Responder</span><span class=p>};</span><span class=w>
 </span><span class=w>
