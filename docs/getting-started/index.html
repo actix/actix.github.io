@@ -28,7 +28,7 @@ extracted from a request (see <code>FromRequest</code> trait) and returns a type
 </span></code></pre></div><p>Notice that some of these handlers have routing information attached directly using the built-in
 macros. These allow you to specify the method and path that the handler should respond to. You will
 see below how to register the other route that does not use a routing macro.</p><p>Next, create an <code>App</code> instance and register the request handlers. Use <code>App::service</code> for the
-handlers using routing macros and <code>App::route</code> for manually routed handlers, declaring the a path
+handlers using routing macros and <code>App::route</code> for manually routed handlers, declaring the path
 and method. Finally, the app is started inside an <code>HttpServer</code> which will serve incoming requests
 using your <code>App</code> as an &ldquo;application factory&rdquo;.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
 </span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
