@@ -13,16 +13,16 @@ extracted from a request (see <code>FromRequest</code> trait) and returns a type
 <code>HttpResponse</code> (see <code>Responder</code> trait):</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>post</span><span class=p>,</span><span class=w> </span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>,</span><span class=w> </span><span class=n>Responder</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>hello</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>hello</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;Hello world!&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[post(</span><span class=s>&#34;/echo&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>echo</span><span class=p>(</span><span class=n>req_body</span>: <span class=nb>String</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>echo</span><span class=p>(</span><span class=n>req_body</span>: <span class=nb>String</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>body</span><span class=p>(</span><span class=n>req_body</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>manual_hello</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>manual_hello</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;Hey there!&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>Notice that some of these handlers have routing information attached directly using the built-in
@@ -31,7 +31,7 @@ see below how to register the other route that does not use a routing macro.</p>
 handlers using routing macros and <code>App::route</code> for manually routed handlers, declaring the path
 and method. Finally, the app is started inside an <code>HttpServer</code> which will serve incoming requests
 using your <code>App</code> as an &ldquo;application factory&rdquo;.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>service</span><span class=p>(</span><span class=n>hello</span><span class=p>)</span><span class=w>
@@ -40,7 +40,7 @@ using your <code>App</code> as an &ldquo;application factory&rdquo;.</p><div cla
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>That&rsquo;s it! Compile and run the program with <code>cargo run</code>. The <code>#[actix_web::main]</code> macro executes the
 async main function within the actix runtime. Now you can go to <code>http://127.0.0.1:8080/</code> or any of

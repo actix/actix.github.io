@@ -10,12 +10,12 @@ application scope have the same url path prefix. The application prefix always c
 prefix should consist of value path segments.</p><blockquote><p>For an application with scope <code>/app</code>, any request with the paths <code>/app</code>, <code>/app/</code>, or <code>/app/test</code>
 would match; however, the path <code>/application</code> would not match.</p></blockquote><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>,</span><span class=w> </span><span class=n>Responder</span><span class=p>};</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>impl</span><span class=w> </span><span class=n>Responder</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=s>&#34;Hello world!&#34;</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>().</span><span class=n>service</span><span class=p>(</span><span class=w>
 </span><span class=w>            </span><span class=c1>// prefixes all resources and routes attached to it...
@@ -26,7 +26,7 @@ would match; however, the path <code>/application</code> would not match.</p></b
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>In this example, an application with the <code>/app</code> prefix and a <code>index.html</code> resource are created. This
 resource is available through the <code>/app/index.html</code> url.</p><blockquote><p>For more information, check the <a href=https://actix.rs/docs/url-dispatch/index.html#using-an-application-prefix-to-compose-applications>URL Dispatch</a> section.</p></blockquote><h2 id=state>State</h2><p>Application state is shared with all routes and resources within the same scope. State can be
@@ -39,13 +39,13 @@ accessible for middleware.</p><p>Let&rsquo;s write a simple application and stor
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>data</span>: <span class=nc>web</span>::<span class=n>Data</span><span class=o>&lt;</span><span class=n>AppState</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>data</span>: <span class=nc>web</span>::<span class=n>Data</span><span class=o>&lt;</span><span class=n>AppState</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>app_name</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=o>&amp;</span><span class=n>data</span><span class=p>.</span><span class=n>app_name</span><span class=p>;</span><span class=w> </span><span class=c1>// &lt;- get app_name
 </span><span class=c1></span><span class=w>
 </span><span class=w>    </span><span class=n>format</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Hello {}!&#34;</span><span class=p>,</span><span class=w> </span><span class=n>app_name</span><span class=p>)</span><span class=w> </span><span class=c1>// &lt;- response with app_name
 </span><span class=c1></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>and pass in the state when initializing the App, and start the application:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>data</span><span class=p>(</span><span class=n>AppState</span><span class=w> </span><span class=p>{</span><span class=w>
@@ -55,7 +55,7 @@ accessible for middleware.</p><p>Let&rsquo;s write a simple application and stor
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>Any number of state types could be registered within the application.</p><h2 id=shared-mutable-state>Shared Mutable State</h2><p><code>HttpServer</code> accepts an application factory rather than an application instance. An <code>HttpServer</code>
 constructs an application instance for each thread. Therefore, application data must be constructed
@@ -69,14 +69,14 @@ our state and create our handler:</p><div class=highlight><pre class=chroma><cod
 </span><span class=w>    </span><span class=n>counter</span>: <span class=nc>Mutex</span><span class=o>&lt;</span><span class=kt>i32</span><span class=o>&gt;</span><span class=p>,</span><span class=w> </span><span class=c1>// &lt;- Mutex is necessary to mutate safely across threads
 </span><span class=c1></span><span class=p>}</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>data</span>: <span class=nc>web</span>::<span class=n>Data</span><span class=o>&lt;</span><span class=n>AppStateWithCounter</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>data</span>: <span class=nc>web</span>::<span class=n>Data</span><span class=o>&lt;</span><span class=n>AppStateWithCounter</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>counter</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>data</span><span class=p>.</span><span class=n>counter</span><span class=p>.</span><span class=n>lock</span><span class=p>().</span><span class=n>unwrap</span><span class=p>();</span><span class=w> </span><span class=c1>// &lt;- get counter&#39;s MutexGuard
 </span><span class=c1></span><span class=w>    </span><span class=o>*</span><span class=n>counter</span><span class=w> </span><span class=o>+=</span><span class=w> </span><span class=mi>1</span><span class=p>;</span><span class=w> </span><span class=c1>// &lt;- access counter inside MutexGuard
 </span><span class=c1></span><span class=w>
 </span><span class=w>    </span><span class=n>format</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Request number: {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>counter</span><span class=p>)</span><span class=w> </span><span class=c1>// &lt;- response with count
 </span><span class=c1></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>and register the data in an <code>App</code>:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>counter</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>web</span>::<span class=n>Data</span>::<span class=n>new</span><span class=p>(</span><span class=n>AppStateWithCounter</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>counter</span>: <span class=nc>Mutex</span>::<span class=n>new</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span><span class=w>
 </span><span class=w>    </span><span class=p>});</span><span class=w>
@@ -90,13 +90,13 @@ our state and create our handler:</p><div class=highlight><pre class=chroma><cod
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><h2 id=using-an-application-scope-to-compose-applications>Using an Application Scope to Compose Applications</h2><p>The <a href=https://docs.rs/actix-web/3/actix_web/web/fn.scope.html><code>web::scope()</code></a> method allows setting a resource group prefix. This scope represents
 a resource prefix that will be prepended to all resource patterns added by the resource
 configuration. This can be used to help mount a set of routes at a different location than the
 original author intended while still maintaining the same resource names.</p><p>For example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>scope</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>web</span>::<span class=n>scope</span><span class=p>(</span><span class=s>&#34;/users&#34;</span><span class=p>).</span><span class=n>service</span><span class=p>(</span><span class=n>show_users</span><span class=p>);</span><span class=w>
 </span><span class=w>    </span><span class=n>App</span>::<span class=n>new</span><span class=p>().</span><span class=n>service</span><span class=p>(</span><span class=n>scope</span><span class=p>);</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
@@ -109,7 +109,7 @@ generate a URL with that same path.</p><h2 id=application-guards-and-virtual-hos
 Actix-web provides several guards. You can check the <a href=https://docs.rs/actix-web/3/actix_web/guard/index.html#functions>functions section</a> of the API
 docs.</p><p>One of the provided guards is <a href=https://docs.rs/actix-web/3/actix_web/guard/fn.Header.html><code>Header</code></a>. It can be used as a filter based on request
 header information.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>service</span><span class=p>(</span><span class=w>
@@ -126,7 +126,7 @@ header information.</p><div class=highlight><pre class=chroma><code class=langua
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><h1 id=configure>Configure</h1><p>For simplicity and reusability both <a href=https://docs.rs/actix-web/3/actix_web/struct.App.html#method.configure><code>App</code></a> and <a href=https://docs.rs/actix-web/3/actix_web/struct.Scope.html#method.configure><code>web::Scope</code></a> provide
 the <code>configure</code> method. This function is useful for moving parts of the configuration to a different
@@ -152,7 +152,7 @@ different module.</p><div class=highlight><pre class=chroma><code class=language
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>configure</span><span class=p>(</span><span class=n>config</span><span class=p>)</span><span class=w>
@@ -161,7 +161,7 @@ different module.</p><div class=highlight><pre class=chroma><code class=language
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>The result of the above example would be:</p><pre><code>/         -&gt; &quot;/&quot;
 /app      -&gt; &quot;app&quot;

@@ -66,8 +66,8 @@ or a <em>future</em> object.</p><p>The following demonstrates creating a simple 
 </span><span class=w>
 </span><span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=n>fut</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=bp>self</span><span class=p>.</span><span class=n>service</span><span class=p>.</span><span class=n>call</span><span class=p>(</span><span class=n>req</span><span class=p>);</span><span class=w>
 </span><span class=w>
-</span><span class=w>        </span><span class=nb>Box</span>::<span class=n>pin</span><span class=p>(</span><span class=n>async</span><span class=w> </span><span class=k>move</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>            </span><span class=kd>let</span><span class=w> </span><span class=n>res</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>fut</span><span class=p>.</span><span class=n>await</span><span class=o>?</span><span class=p>;</span><span class=w>
+</span><span class=w>        </span><span class=nb>Box</span>::<span class=n>pin</span><span class=p>(</span><span class=k>async</span><span class=w> </span><span class=k>move</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>            </span><span class=kd>let</span><span class=w> </span><span class=n>res</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>fut</span><span class=p>.</span><span class=k>await</span><span class=o>?</span><span class=p>;</span><span class=w>
 </span><span class=w>
 </span><span class=w>            </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Hi from response&#34;</span><span class=p>);</span><span class=w>
 </span><span class=w>            </span><span class=nb>Ok</span><span class=p>(</span><span class=n>res</span><span class=p>)</span><span class=w>
@@ -79,7 +79,7 @@ or a <em>future</em> object.</p><p>The following demonstrates creating a simple 
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>futures</span>::<span class=n>future</span>::<span class=n>FutureExt</span><span class=p>;</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>app</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>wrap_fn</span><span class=p>(</span><span class=o>|</span><span class=n>req</span><span class=p>,</span><span class=w> </span><span class=n>srv</span><span class=o>|</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>            </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Hi from start. You requested: {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>req</span><span class=p>.</span><span class=n>path</span><span class=p>());</span><span class=w>
@@ -90,7 +90,7 @@ or a <em>future</em> object.</p><p>The following demonstrates creating a simple 
 </span><span class=w>        </span><span class=p>})</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>route</span><span class=p>(</span><span class=w>
 </span><span class=w>            </span><span class=s>&#34;/index.html&#34;</span><span class=p>,</span><span class=w>
-</span><span class=w>            </span><span class=n>web</span>::<span class=n>get</span><span class=p>().</span><span class=n>to</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=n>async</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>            </span><span class=n>web</span>::<span class=n>get</span><span class=p>().</span><span class=n>to</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=k>async</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>                </span><span class=s>&#34;Hello, middleware!&#34;</span><span class=w>
 </span><span class=w>            </span><span class=p>}),</span><span class=w>
 </span><span class=w>        </span><span class=p>);</span><span class=w>
@@ -105,7 +105,7 @@ with <code>default</code> method, it uses the default format:</p><pre><code clas
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>env_logger</span>::<span class=n>Env</span><span class=p>;</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=n>env_logger</span>::<span class=n>from_env</span><span class=p>(</span><span class=n>Env</span>::<span class=n>default</span><span class=p>().</span><span class=n>default_filter_or</span><span class=p>(</span><span class=s>&#34;info&#34;</span><span class=p>)).</span><span class=n>init</span><span class=p>();</span><span class=w>
@@ -117,7 +117,7 @@ with <code>default</code> method, it uses the default format:</p><pre><code clas
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>The following is an example of the default logging format:</p><pre><code>INFO:actix_web::middleware::logger: 127.0.0.1:59934 [02/Dec/2017:00:21:43 -0800] &quot;GET / HTTP/1.1&quot; 302 0 &quot;-&quot; &quot;curl/7.54.0&quot; 0.000397
 INFO:actix_web::middleware::logger: 127.0.0.1:59947 [02/Dec/2017:00:22:40 -0800] &quot;GET /index.html HTTP/1.1&quot; 200 0 &quot;-&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0&quot; 0.000646
@@ -126,7 +126,7 @@ INFO:actix_web::middleware::logger: 127.0.0.1:59947 [02/Dec/2017:00:22:40 -0800]
 a specified header.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>http</span><span class=p>,</span><span class=w> </span><span class=n>middleware</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
@@ -143,7 +143,7 @@ a specified header.</p><div class=highlight><pre class=chroma><code class=langua
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><h2 id=user-sessions>User sessions</h2><p>Actix-web provides a general solution for session management. The
 <a href=https://docs.rs/actix-session/0.3.0/actix_session/><strong>actix-session</strong></a> middleware can use multiple backend types to store session data.</p><blockquote><p>By default, only cookie session backend is implemented. Other backend implementations
@@ -159,7 +159,7 @@ backend implementation, such as a <code>CookieSession</code>. To access session 
 <a href=https://docs.rs/actix-session/0.3.0/actix_session/struct.Session.html><em>Session</em></a> object, which allows us to get or set session data.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_session</span>::<span class=p>{</span><span class=n>CookieSession</span><span class=p>,</span><span class=w> </span><span class=n>Session</span><span class=p>};</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>session</span>: <span class=nc>Session</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;</span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>session</span>: <span class=nc>Session</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;</span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=c1>// access session data
 </span><span class=c1></span><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=kd>let</span><span class=w> </span><span class=nb>Some</span><span class=p>(</span><span class=n>count</span><span class=p>)</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>session</span><span class=p>.</span><span class=n>get</span>::<span class=o>&lt;</span><span class=kt>i32</span><span class=o>&gt;</span><span class=p>(</span><span class=s>&#34;counter&#34;</span><span class=p>)</span><span class=o>?</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>session</span><span class=p>.</span><span class=n>set</span><span class=p>(</span><span class=s>&#34;counter&#34;</span><span class=p>,</span><span class=w> </span><span class=n>count</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=mi>1</span><span class=p>)</span><span class=o>?</span><span class=p>;</span><span class=w>
@@ -174,7 +174,7 @@ backend implementation, such as a <code>CookieSession</code>. To access session 
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>wrap</span><span class=p>(</span><span class=w>
@@ -185,7 +185,7 @@ backend implementation, such as a <code>CookieSession</code>. To access session 
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><h1 id=error-handlers>Error handlers</h1><p><code>ErrorHandlers</code> middleware allows us to provide custom handlers for responses.</p><p>You can use the <code>ErrorHandlers::handler()</code> method to register a custom error handler
 for a specific status code. You can modify an existing response or create a completly new
@@ -202,7 +202,7 @@ into a response.</p><div class=highlight><pre class=chroma><code class=language-
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
@@ -219,6 +219,6 @@ into a response.</p><div class=highlight><pre class=chroma><code class=language-
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><div class=github-edit><a class="fa fa-github" href=https://github.com/actix/actix-website/tree/master/content/docs/middleware.md>Edit on GitHub</a></div><div class=actix-next><b>Next up</b>: <a href=/docs/static-files/>Static Files</a></div></div></div></div></div><footer class=actix-footer><div class="text-muted actix-footer-gray d-flex justify-content-between"><div class=actix-footer-info>Copyright © 2020 The Actix Team</div><div class=actix-footer-social><a href=https://github.com/actix class=text-muted><i class="fa fa-github" aria-hidden=true></i></a></div></div></footer><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js integrity=sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7 crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js integrity=sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8 crossorigin=anonymous></script><script src=https://actix.rs/js/bootstrap.min.js></script><script src=https://actix.rs/js/actix.js></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-110322332-1','auto');ga('send','pageview');}</script></body></html>

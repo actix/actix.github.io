@@ -7,7 +7,7 @@ various convenience methods for building responses.</p><blockquote><p>Check the 
 constructed <em>HttpResponse</em> instance. If this methods is called on the same builder
 instance multiple times, the builder will panic.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=n>HttpResponse</span><span class=p>;</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>()</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>content_type</span><span class=p>(</span><span class=s>&#34;plain/text&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>header</span><span class=p>(</span><span class=s>&#34;X-Hdr&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;sample&#34;</span><span class=p>)</span><span class=w>
@@ -17,12 +17,12 @@ instance multiple times, the builder will panic.</p><div class=highlight><pre cl
 The following codecs are supported:</p><ul><li>Brotli</li><li>Gzip</li><li>Deflate</li><li>Identity</li></ul><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>middleware</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index_br</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index_br</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;data&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>wrap</span><span class=p>(</span><span class=n>middleware</span>::<span class=n>Compress</span>::<span class=n>default</span><span class=p>())</span><span class=w>
@@ -30,7 +30,7 @@ The following codecs are supported:</p><ul><li>Brotli</li><li>Gzip</li><li>Defla
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>Response payload is compressed based on the <em>encoding</em> parameter from the
 <code>middleware::BodyEncoding</code> trait. By default, <code>ContentEncoding::Auto</code> is used. If
@@ -41,14 +41,14 @@ If another content encoding is selected, the compression is enforced for that co
 </span><span class=w></span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index_br</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index_br</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>()</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>encoding</span><span class=p>(</span><span class=n>ContentEncoding</span>::<span class=n>Br</span><span class=p>)</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;data&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>wrap</span><span class=p>(</span><span class=n>middleware</span>::<span class=n>Compress</span>::<span class=n>default</span><span class=p>())</span><span class=w>
@@ -56,16 +56,16 @@ If another content encoding is selected, the compression is enforced for that co
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>or for the entire application:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>http</span>::<span class=n>ContentEncoding</span><span class=p>,</span><span class=w> </span><span class=n>dev</span>::<span class=n>BodyEncoding</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>};</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index_br</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index_br</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;data&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>middleware</span><span class=p>,</span><span class=w> </span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
@@ -75,7 +75,7 @@ If another content encoding is selected, the compression is enforced for that co
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>In this case we explicitly disable content compression by setting content encoding to
 an <code>Identity</code> value:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=w>
@@ -83,7 +83,7 @@ an <code>Identity</code> value:</p><div class=highlight><pre class=chroma><code 
 </span><span class=w></span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>()</span><span class=w>
 </span><span class=w>        </span><span class=c1>// v- disable compression
 </span><span class=c1></span><span class=w>        </span><span class=p>.</span><span class=n>encoding</span><span class=p>(</span><span class=n>ContentEncoding</span>::<span class=n>Identity</span><span class=p>)</span><span class=w>
@@ -91,7 +91,7 @@ an <code>Identity</code> value:</p><div class=highlight><pre class=chroma><code 
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>wrap</span><span class=p>(</span><span class=n>middleware</span>::<span class=n>Compress</span>::<span class=n>default</span><span class=p>())</span><span class=w>
@@ -99,7 +99,7 @@ an <code>Identity</code> value:</p><div class=highlight><pre class=chroma><code 
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p>When dealing with an already compressed body (for example when serving assets),
 set the content encoding to <code>Identity</code> to avoid compressing the already compressed
@@ -113,7 +113,7 @@ data and set the <code>content-encoding</code> header manually:</p><div class=hi
 </span><span class=w></span><span class=p>];</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>()</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>encoding</span><span class=p>(</span><span class=n>ContentEncoding</span>::<span class=n>Identity</span><span class=p>)</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>header</span><span class=p>(</span><span class=s>&#34;content-encoding&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;gzip&#34;</span><span class=p>)</span><span class=w>
@@ -124,12 +124,12 @@ default <code>ContentEncoding::Auto</code> is used, which implies automatic cont
 negotiation.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>ContentEncoding</span><span class=p>,</span><span class=w> </span><span class=n>middleware</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;data&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>wrap</span><span class=p>(</span><span class=n>middleware</span>::<span class=n>Compress</span>::<span class=n>new</span><span class=p>(</span><span class=n>ContentEncoding</span>::<span class=n>Br</span><span class=p>))</span><span class=w>
@@ -137,7 +137,7 @@ negotiation.</p><div class=highlight><pre class=chroma><code class=language-rust
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><h1 id=json-response>JSON Response</h1><p>The <code>Json</code> type allows to respond with well-formed JSON data: simply return a value of
 type <code>Json&lt;T></code> where <code>T</code> is the type of a structure to serialize into <em>JSON</em>.
@@ -150,19 +150,19 @@ The type <code>T</code> must implement the <code>Serialize</code> trait from <em
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/a/{name}&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>obj</span>: <span class=nc>web</span>::<span class=n>Path</span><span class=o>&lt;</span><span class=n>MyObj</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;</span><span class=n>HttpResponse</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>obj</span>: <span class=nc>web</span>::<span class=n>Path</span><span class=o>&lt;</span><span class=n>MyObj</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;</span><span class=n>HttpResponse</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=nb>Ok</span><span class=p>(</span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>json</span><span class=p>(</span><span class=n>MyObj</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>name</span>: <span class=nc>obj</span><span class=p>.</span><span class=n>name</span><span class=p>.</span><span class=n>to_string</span><span class=p>(),</span><span class=w>
 </span><span class=w>    </span><span class=p>}))</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=n>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=n>App</span>::<span class=n>new</span><span class=p>().</span><span class=n>service</span><span class=p>(</span><span class=n>index</span><span class=p>))</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>        </span><span class=p>.</span><span class=n>await</span><span class=w>
+</span><span class=w>        </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><div class=github-edit><a class="fa fa-github" href=https://github.com/actix/actix-website/tree/master/content/docs/response.md>Edit on GitHub</a></div><div class=actix-next><b>Next up</b>: <a href=/docs/testing/>Testing</a></div></div></div></div></div><footer class=actix-footer><div class="text-muted actix-footer-gray d-flex justify-content-between"><div class=actix-footer-info>Copyright © 2020 The Actix Team</div><div class=actix-footer-social><a href=https://github.com/actix class=text-muted><i class="fa fa-github" aria-hidden=true></i></a></div></div></footer><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js integrity=sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7 crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js integrity=sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8 crossorigin=anonymous></script><script src=https://actix.rs/js/bootstrap.min.js></script><script src=https://actix.rs/js/actix.js></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-110322332-1','auto');ga('send','pageview');}</script></body></html>
