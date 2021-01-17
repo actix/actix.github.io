@@ -85,7 +85,8 @@ query parameters. Underneath it uses <em>serde_urlencoded</em> crate.</p><div cl
 </span><span class=w>    </span><span class=n>username</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
-</span><span class=w></span><span class=c1>// this handler get called only if the request&#39;s query contains `username` field
+</span><span class=w></span><span class=c1>// this handler gets called if the query deserializes into `Info` successfully
+</span><span class=c1>// otherwise a 400 Bad Request error response is returned
 </span><span class=c1></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>info</span>: <span class=nc>web</span>::<span class=n>Query</span><span class=o>&lt;</span><span class=n>Info</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>format</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Welcome {}!&#34;</span><span class=p>,</span><span class=w> </span><span class=n>info</span><span class=p>.</span><span class=n>username</span><span class=p>)</span><span class=w>
