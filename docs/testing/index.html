@@ -7,7 +7,7 @@ integration tests.</p><h1 id=unit-tests>Unit Tests</h1><p>For unit testing, acti
 <code>HttpRequest</code> instance with <code>to_http_request()</code> and call your handler with it.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[cfg(test)]</span><span class=w>
 </span><span class=w></span><span class=k>mod</span> <span class=nn>tests</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=k>super</span>::<span class=o>*</span><span class=p>;</span><span class=w>
-</span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=n>test</span><span class=p>;</span><span class=w>
+</span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>http</span><span class=p>,</span><span class=w> </span><span class=n>test</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w>    </span><span class=cp>#[actix_rt::test]</span><span class=w>
 </span><span class=w>    </span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>test_index_ok</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
