@@ -62,7 +62,7 @@ equal to the number of logical CPUs in the system. This number can be overridden
 </span></code></pre></div><p>Once the workers are created, they each receive a separate <em>application</em> instance to handle
 requests. Application state is not shared between the threads, and handlers are free to manipulate
 their copy of the state with no concurrency concerns.</p><blockquote><p>Application state does not need to be <code>Send</code> or <code>Sync</code>, but application
-factory must be <code>Send</code> + <code>Sync</code>.</p></blockquote><p>To share state between worker threads, use an <code>Arc</code>. Special care should be taken once sharing and
+factories must be <code>Send</code> + <code>Sync</code>.</p></blockquote><p>To share state between worker threads, use an <code>Arc</code>. Special care should be taken once sharing and
 synchronization are introduced. In many cases, performance costs are inadvertently introduced as a
 result of locking the shared state for modifications.</p><p>In some cases these costs can be alleviated using more efficient locking strategies, for example
 using <a href=https://doc.rust-lang.org/std/sync/struct.RwLock.html>read/write locks</a> instead of

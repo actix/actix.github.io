@@ -28,7 +28,7 @@ would match; however, the path <code>/application</code> would not match.</p></b
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
-</span></code></pre></div><p>In this example, an application with the <code>/app</code> prefix and a <code>index.html</code> resource are created. This
+</span></code></pre></div><p>In this example, an application with the <code>/app</code> prefix and an <code>index.html</code> resource is created. This
 resource is available through the <code>/app/index.html</code> url.</p><blockquote><p>For more information, check the <a href=https://actix.rs/docs/url-dispatch/index.html#using-an-application-prefix-to-compose-applications>URL Dispatch</a> section.</p></blockquote><h2 id=state>State</h2><p>Application state is shared with all routes and resources within the same scope. State can be
 accessed with the <a href=https://docs.rs/actix-web/3/actix_web/web/struct.Data.html><code>web::Data&lt;T></code></a> extractor where <code>T</code> is the type of the state. State is also
 accessible for middleware.</p><p>Let&rsquo;s write a simple application and store the application name in the state:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
@@ -44,7 +44,7 @@ accessible for middleware.</p><p>Let&rsquo;s write a simple application and stor
 </span><span class=c1></span><span class=w>
 </span><span class=w>    </span><span class=n>format</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Hello {}!&#34;</span><span class=p>,</span><span class=w> </span><span class=n>app_name</span><span class=p>)</span><span class=w> </span><span class=c1>// &lt;- response with app_name
 </span><span class=c1></span><span class=p>}</span><span class=w>
-</span></code></pre></div><p>and pass in the state when initializing the App, and start the application:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
+</span></code></pre></div><p>Next, pass in the state when initializing the App and start the application:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[actix_web::main]</span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>()</span><span class=w>
