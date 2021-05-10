@@ -163,7 +163,7 @@ to see.</p><h1 id=error-logging-1>Error Logging</h1><p>This is a basic example u
 <span class=nx>log</span> <span class=p>=</span> <span class=s2>&#34;0.4&#34;</span>
 </code></pre></div><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>middleware</span>::<span class=n>Logger</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>,</span><span class=w> </span><span class=nb>Result</span><span class=p>};</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>derive_more</span>::<span class=p>{</span><span class=n>Display</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=p>};</span><span class=w>
-</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>log</span>::<span class=n>debug</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>log</span>::<span class=n>info</span><span class=p>;</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[derive(Debug, Display, Error)]</span><span class=w>
 </span><span class=w></span><span class=cp>#[display(fmt = </span><span class=s>&#34;my error: {}&#34;</span><span class=cp>, name)]</span><span class=w>
@@ -177,14 +177,14 @@ to see.</p><h1 id=error-logging-1>Error Logging</h1><p>This is a basic example u
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;&amp;</span><span class=nb>&#39;static</span><span class=w> </span><span class=kt>str</span><span class=p>,</span><span class=w> </span><span class=n>MyError</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>err</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>MyError</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=n>name</span>: <span class=s>&#34;test error&#34;</span><span class=w> </span><span class=p>};</span><span class=w>
-</span><span class=w>    </span><span class=n>debug</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;{}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>err</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=n>info</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;{}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>err</span><span class=p>);</span><span class=w>
 </span><span class=w>    </span><span class=nb>Err</span><span class=p>(</span><span class=n>err</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[rustfmt::skip]</span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=n>std</span>::<span class=n>env</span>::<span class=n>set_var</span><span class=p>(</span><span class=s>&#34;RUST_LOG&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;my_errors=debug,actix_web=info&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=n>std</span>::<span class=n>env</span>::<span class=n>set_var</span><span class=p>(</span><span class=s>&#34;RUST_LOG&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;info&#34;</span><span class=p>);</span><span class=w>
 </span><span class=w>    </span><span class=n>std</span>::<span class=n>env</span>::<span class=n>set_var</span><span class=p>(</span><span class=s>&#34;RUST_BACKTRACE&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;1&#34;</span><span class=p>);</span><span class=w>
 </span><span class=w>    </span><span class=n>env_logger</span>::<span class=n>init</span><span class=p>();</span><span class=w>
 </span><span class=w>
