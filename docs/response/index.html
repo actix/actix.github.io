@@ -9,7 +9,7 @@ instance multiple times, the builder will panic.</p><div class=highlight><pre cl
 </span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>()</span><span class=w>
-</span><span class=w>        </span><span class=p>.</span><span class=n>content_type</span><span class=p>(</span><span class=s>&#34;plain/text&#34;</span><span class=p>)</span><span class=w>
+</span><span class=w>        </span><span class=p>.</span><span class=n>content_type</span><span class=p>(</span><span class=s>&#34;text/plain&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>header</span><span class=p>(</span><span class=s>&#34;X-Hdr&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;sample&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;data&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
