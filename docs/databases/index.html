@@ -41,7 +41,7 @@ beneficial not to use a state wrapper struct because the pool handles shared acc
 </span><span class=w>
 </span><span class=w>    </span><span class=c1>// Start HTTP server
 </span><span class=c1></span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=k>move</span><span class=w> </span><span class=o>||</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span>::<span class=n>data</span><span class=p>(</span><span class=n>pool</span><span class=p>.</span><span class=n>clone</span><span class=p>())</span><span class=w>
+</span><span class=w>        </span><span class=n>App</span>::<span class=n>new</span><span class=p>().</span><span class=n>data</span><span class=p>(</span><span class=n>pool</span><span class=p>.</span><span class=n>clone</span><span class=p>())</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>resource</span><span class=p>(</span><span class=s>&#34;/{name}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>web</span>::<span class=n>get</span><span class=p>().</span><span class=n>to</span><span class=p>(</span><span class=n>index</span><span class=p>))</span><span class=w>
 </span><span class=w>    </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
