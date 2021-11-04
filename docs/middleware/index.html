@@ -96,7 +96,7 @@ or a <em>future</em> object.</p><p>The following demonstrates creating a simple 
 </span><span class=w>        </span><span class=p>);</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><blockquote><p>Actix-web provides several useful middleware, such as <em>logging</em>, <em>user sessions</em>,
-<em>compress</em>, etc.</p></blockquote><h1 id=logging>Logging</h1><p>Logging is implemented as a middleware. It is common to register a logging middleware
+<em>compress</em>, etc.</p></blockquote><p><strong>Warning: if you use <code>wrap()</code> or <code>wrap_fn()</code> multiple times, the last occurrence will be executed first.</strong></p><h1 id=logging>Logging</h1><p>Logging is implemented as a middleware. It is common to register a logging middleware
 as the first middleware for the application. Logging middleware must be registered for
 each application.</p><p>The <code>Logger</code> middleware uses the standard log crate to log information. You should enable logger
 for <em>actix_web</em> package to see access log (<a href=https://docs.rs/env_logger/*/env_logger/>env_logger</a> or similar).</p><h2 id=usage>Usage</h2><p>Create <code>Logger</code> middleware with the specified <code>format</code>. Default <code>Logger</code> can be created
