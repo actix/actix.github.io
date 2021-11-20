@@ -74,7 +74,7 @@ or a <em>future</em> object.</p><p>The following demonstrates creating a simple 
 </span><span class=w>        </span><span class=p>})</span><span class=w>
 </span><span class=w>    </span><span class=p>}</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
-</span></code></pre></div><p>Alternatively, for simple use cases, you can use <a href=https://docs.rs/actix-web/3/actix_web/struct.App.html#method.wrap_fn><em>wrap_fn</em></a> to create small, ad-hoc middleware:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_service</span>::<span class=n>Service</span><span class=p>;</span><span class=w>
+</span></code></pre></div><p>Alternatively, for simple use cases, you can use <a href=https://docs.rs/actix-web/3/actix_web/struct.App.html#method.wrap_fn><em>wrap_fn</em></a> to create small, ad-hoc middleware:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=n>dev</span>::<span class=n>Service</span><span class=p>;</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>};</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>futures</span>::<span class=n>future</span>::<span class=n>FutureExt</span><span class=p>;</span><span class=w>
 </span><span class=w>
