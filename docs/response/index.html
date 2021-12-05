@@ -13,7 +13,37 @@ instance multiple times, the builder will panic.</p><div class=highlight><pre cl
 </span><span class=w>        </span><span class=p>.</span><span class=n>header</span><span class=p>(</span><span class=s>&#34;X-Hdr&#34;</span><span class=p>,</span><span class=w> </span><span class=s>&#34;sample&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w>        </span><span class=p>.</span><span class=n>body</span><span class=p>(</span><span class=s>&#34;data&#34;</span><span class=p>)</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
-</span></code></pre></div><h1 id=content-encoding>Content encoding</h1><p>Actix-web can automatically <em>compress</em> payloads with the <a href=https://docs.rs/actix-web/3/actix_web/middleware/struct.Compress.html><em>Compress middleware</em></a>.
+</span></code></pre></div><h1 id=json-response>JSON Response</h1><p>The <code>Json</code> type allows to respond with well-formed JSON data: simply return a value of
+type <code>Json&lt;T></code> where <code>T</code> is the type of a structure to serialize into <em>JSON</em>.
+The type <code>T</code> must implement the <code>Serialize</code> trait from <em>serde</em>.</p><p>For the following example to work, you need to add <code>serde</code> to your dependencies in <code>Cargo.toml</code>:</p><div class=highlight><pre class=chroma><code class=language-toml data-lang=toml><span class=p>[</span><span class=nx>dependencies</span><span class=p>]</span>
+<span class=nx>serde</span> <span class=p>=</span> <span class=s2>&#34;1&#34;</span>
+</code></pre></div><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>Responder</span><span class=p>,</span><span class=w> </span><span class=nb>Result</span><span class=p>};</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>serde</span>::<span class=n>Serialize</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=cp>#[derive(Serialize)]</span><span class=w>
+</span><span class=w></span><span class=k>struct</span> <span class=nc>MyObj</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>name</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/a/{name}&#34;</span><span class=cp>)]</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>name</span>: <span class=nc>web</span>::<span class=n>Path</span><span class=o>&lt;</span><span class=nb>String</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;</span><span class=k>impl</span><span class=w> </span><span class=n>Responder</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>obj</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>MyObj</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=n>name</span>: <span class=nc>name</span><span class=p>.</span><span class=n>to_string</span><span class=p>(),</span><span class=w>
+</span><span class=w>    </span><span class=p>};</span><span class=w>
+</span><span class=w>    </span><span class=nb>Ok</span><span class=p>(</span><span class=n>web</span>::<span class=n>Json</span><span class=p>(</span><span class=n>obj</span><span class=p>))</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
+</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=n>App</span>::<span class=n>new</span><span class=p>().</span><span class=n>service</span><span class=p>(</span><span class=n>index</span><span class=p>))</span><span class=w>
+</span><span class=w>        </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
+</span><span class=w>        </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
+</span><span class=w>        </span><span class=p>.</span><span class=k>await</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p>Using the <code>Json</code> type this way instead of calling the <code>.json</code> method on a <code>HttpResponse</code> makes it
+immediately clear that the function returns JSON and not any other type of response.</p><h1 id=content-encoding>Content encoding</h1><p>Actix-web can automatically <em>compress</em> payloads with the <a href=https://docs.rs/actix-web/3/actix_web/middleware/struct.Compress.html><em>Compress middleware</em></a>.
 The following codecs are supported:</p><ul><li>Brotli</li><li>Gzip</li><li>Deflate</li><li>Identity</li></ul><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>middleware</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/&#34;</span><span class=cp>)]</span><span class=w>
@@ -138,31 +168,5 @@ negotiation.</p><div class=highlight><pre class=chroma><code class=language-rust
 </span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
-</span><span class=w></span><span class=p>}</span><span class=w>
-</span></code></pre></div><h1 id=json-response>JSON Response</h1><p>The <code>Json</code> type allows to respond with well-formed JSON data: simply return a value of
-type <code>Json&lt;T></code> where <code>T</code> is the type of a structure to serialize into <em>JSON</em>.
-The type <code>T</code> must implement the <code>Serialize</code> trait from <em>serde</em>.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>web</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=nb>Result</span><span class=p>};</span><span class=w>
-</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>serde</span>::<span class=p>{</span><span class=n>Deserialize</span><span class=p>,</span><span class=w> </span><span class=n>Serialize</span><span class=p>};</span><span class=w>
-</span><span class=w>
-</span><span class=w></span><span class=cp>#[derive(Serialize, Deserialize)]</span><span class=w>
-</span><span class=w></span><span class=k>struct</span> <span class=nc>MyObj</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=n>name</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
-</span><span class=w></span><span class=p>}</span><span class=w>
-</span><span class=w>
-</span><span class=w></span><span class=cp>#[get(</span><span class=s>&#34;/a/{name}&#34;</span><span class=cp>)]</span><span class=w>
-</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>index</span><span class=p>(</span><span class=n>obj</span>: <span class=nc>web</span>::<span class=n>Path</span><span class=o>&lt;</span><span class=n>MyObj</span><span class=o>&gt;</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>Result</span><span class=o>&lt;</span><span class=n>HttpResponse</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=nb>Ok</span><span class=p>(</span><span class=n>HttpResponse</span>::<span class=nb>Ok</span><span class=p>().</span><span class=n>json</span><span class=p>(</span><span class=n>MyObj</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>        </span><span class=n>name</span>: <span class=nc>obj</span><span class=p>.</span><span class=n>name</span><span class=p>.</span><span class=n>to_string</span><span class=p>(),</span><span class=w>
-</span><span class=w>    </span><span class=p>}))</span><span class=w>
-</span><span class=w></span><span class=p>}</span><span class=w>
-</span><span class=w>
-</span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
-</span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>};</span><span class=w>
-</span><span class=w>
-</span><span class=w>    </span><span class=n>HttpServer</span>::<span class=n>new</span><span class=p>(</span><span class=o>||</span><span class=w> </span><span class=n>App</span>::<span class=n>new</span><span class=p>().</span><span class=n>service</span><span class=p>(</span><span class=n>index</span><span class=p>))</span><span class=w>
-</span><span class=w>        </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
-</span><span class=w>        </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
-</span><span class=w>        </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><div class=github-edit><a class="fa fa-github" href=https://github.com/actix/actix-website/tree/master/content/docs/response.md>Edit on GitHub</a></div><div class=actix-next><b>Next up</b>: <a href=/docs/testing/>Testing</a></div></div></div></div></div><footer class=actix-footer><div class="text-muted actix-footer-gray d-flex justify-content-between"><div class=actix-footer-info>Copyright © 2021 The Actix Team</div><div class=actix-footer-social><a href=https://github.com/actix class=text-muted><i class="fa fa-github" aria-hidden=true></i></a></div></div></footer><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js integrity=sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7 crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js integrity=sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8 crossorigin=anonymous></script><script src=https://actix.rs/js/bootstrap.min.js></script><script src=https://actix.rs/js/actix.js></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-110322332-1','auto');ga('send','pageview');}</script></body></html>
