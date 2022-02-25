@@ -93,19 +93,19 @@ where this means &ldquo;accept any characters up to the next slash character and
 as the name in the <code>HttpRequest.match_info()</code> object&rdquo;.</p><p>A replacement marker in a pattern matches the regular expression <code>[^{}/]+</code>.</p><p>A match_info is the <code>Params</code> object representing the dynamic parts extracted from a
 <em>URL</em> based on the routing pattern. It is available as <em>request.match_info</em>. For example, the
 following pattern defines one literal segment (foo) and two replacement markers (baz, and bar):</p><pre><code>foo/{baz}/{bar}
-</code></pre><p>The above pattern will match these URLs, generating the following match information:</p><pre><code>foo/1/2        -&gt; Params {'baz':'1', 'bar':'2'}
-foo/abc/def    -&gt; Params {'baz':'abc', 'bar':'def'}
+</code></pre><p>The above pattern will match these URLs, generating the following match information:</p><pre><code>foo/1/2        -&gt; Params {'baz': '1', 'bar': '2'}
+foo/abc/def    -&gt; Params {'baz': 'abc', 'bar': 'def'}
 </code></pre><p>It will not match the following patterns however:</p><pre><code>foo/1/2/        -&gt; No match (trailing slash)
 bar/abc/def     -&gt; First segment literal mismatch
 </code></pre><p>The match for a segment replacement marker in a segment will be done only up to
 the first non-alphanumeric character in the segment in the pattern. So, for instance,
 if this route pattern was used:</p><pre><code>foo/{name}.html
 </code></pre><p>The literal path <em>/foo/biz.html</em> will match the above route pattern, and the match result
-will be <code>Params{'name': 'biz'}</code>. However, the literal path <em>/foo/biz</em> will not match,
+will be <code>Params {'name': 'biz'}</code>. However, the literal path <em>/foo/biz</em> will not match,
 because it does not contain a literal <em>.html</em> at the end of the segment represented
 by <em>{name}.html</em> (it only contains biz, not biz.html).</p><p>To capture both segments, two replacement markers can be used:</p><pre><code>foo/{name}.{ext}
 </code></pre><p>The literal path <em>/foo/biz.html</em> will match the above route pattern, and the match
-result will be <em>Params{&lsquo;name&rsquo;: &lsquo;biz&rsquo;, &lsquo;ext&rsquo;: &lsquo;html&rsquo;}</em>. This occurs because there is a
+result will be <em>Params {&lsquo;name&rsquo;: &lsquo;biz&rsquo;, &lsquo;ext&rsquo;: &lsquo;html&rsquo;}</em>. This occurs because there is a
 literal part of <em>.</em> (period) between the two replacement markers <em>{name}</em> and <em>{ext}</em>.</p><p>Replacement markers can optionally specify a regular expression which will be used to decide
 whether a path segment should match the marker. To specify that a replacement marker should
 match only a specific set of characters as defined by a regular expression, you must use a
@@ -118,14 +118,14 @@ to match an arbitrary sequence of characters, such as <em>{foo:\d+}</em> to matc
 For example, for the URL <em>/abc/</em>:</p><ul><li><em>/abc/{foo}</em> will not match.</li><li><em>/{foo}/</em> will match.</li></ul><blockquote><p><strong>Note</strong>: path will be URL-unquoted and decoded into valid unicode string before
 matching pattern and values representing matched path segments will be URL-unquoted too.</p></blockquote><p>So for instance, the following pattern:</p><pre><code>foo/{bar}
 </code></pre><p>When matching the following URL:</p><pre><code>http://example.com/foo/La%20Pe%C3%B1a
-</code></pre><p>The match dictionary will look like so (the value is URL-decoded):</p><pre><code>Params{'bar': 'La Pe\xf1a'}
+</code></pre><p>The match dictionary will look like so (the value is URL-decoded):</p><pre><code>Params {'bar': 'La Pe\xf1a'}
 </code></pre><p>Literal strings in the path segment should represent the decoded value of the
 path provided to actix. You don&rsquo;t want to use a URL-encoded value in the pattern.
 For example, rather than this:</p><pre><code>/Foo%20Bar/{baz}
 </code></pre><p>You&rsquo;ll want to use something like this:</p><pre><code>/Foo Bar/{baz}
 </code></pre><p>It is possible to get &ldquo;tail match&rdquo;. For this purpose custom regex has to be used.</p><pre><code>foo/{bar}/{tail:.*}
-</code></pre><p>The above pattern will match these URLs, generating the following match information:</p><pre><code>foo/1/2/           -&gt; Params{'bar':'1', 'tail': '2/'}
-foo/abc/def/a/b/c  -&gt; Params{'bar':u'abc', 'tail': 'def/a/b/c'}
+</code></pre><p>The above pattern will match these URLs, generating the following match information:</p><pre><code>foo/1/2/           -&gt; Params {'bar': '1', 'tail': '2/'}
+foo/abc/def/a/b/c  -&gt; Params {'bar': 'abc', 'tail': 'def/a/b/c'}
 </code></pre><h1 id=scoping-routes>Scoping Routes</h1><p>Scoping helps you organize routes sharing common root paths. You can nest
 scopes within scopes.</p><p>Suppose that you want to organize paths to endpoints used to view &ldquo;Users&rdquo;. Such paths may include:</p><ul><li>/users</li><li>/users/show</li><li>/users/show/{id}</li></ul><p>A scoped layout of these paths would appear as follows</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=cp>#[get(</span><span class=s>&#34;/show&#34;</span><span class=cp>)]</span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>show_users</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
