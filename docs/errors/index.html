@@ -37,7 +37,9 @@ for declarative error enums.</p><div class=highlight><pre class=chroma><code cla
 </span><span class=w></span><span class=p>}</span><span class=w>
 </span></code></pre></div><p><code>ResponseError</code> has a default implementation for <code>error_response()</code> that will render a <em>500</em>
 (internal server error), and that&rsquo;s what will happen when the <code>index</code> handler executes above.</p><p>Override <code>error_response()</code> to produce more useful results:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=n>dev</span>::<span class=n>HttpResponseBuilder</span><span class=p>,</span><span class=w> </span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>header</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>StatusCode</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>http</span>::<span class=p>{</span><span class=n>header</span>::<span class=n>ContentType</span><span class=p>,</span><span class=w> </span><span class=n>StatusCode</span><span class=p>},</span><span class=w>
+</span><span class=w>    </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w>
 </span><span class=w></span><span class=p>};</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>derive_more</span>::<span class=p>{</span><span class=n>Display</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=p>};</span><span class=w>
 </span><span class=w>
@@ -55,8 +57,8 @@ for declarative error enums.</p><div class=highlight><pre class=chroma><code cla
 </span><span class=w>
 </span><span class=w></span><span class=k>impl</span><span class=w> </span><span class=n>error</span>::<span class=n>ResponseError</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>MyError</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>fn</span> <span class=nf>error_response</span><span class=p>(</span><span class=o>&amp;</span><span class=bp>self</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>        </span><span class=n>HttpResponseBuilder</span>::<span class=n>new</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>status_code</span><span class=p>())</span><span class=w>
-</span><span class=w>            </span><span class=p>.</span><span class=n>set_header</span><span class=p>(</span><span class=n>header</span>::<span class=n>CONTENT_TYPE</span><span class=p>,</span><span class=w> </span><span class=s>&#34;text/html; charset=utf-8&#34;</span><span class=p>)</span><span class=w>
+</span><span class=w>        </span><span class=n>HttpResponse</span>::<span class=n>build</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>status_code</span><span class=p>())</span><span class=w>
+</span><span class=w>            </span><span class=p>.</span><span class=n>insert_header</span><span class=p>(</span><span class=n>ContentType</span>::<span class=n>html</span><span class=p>())</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>body</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>to_string</span><span class=p>())</span><span class=w>
 </span><span class=w>    </span><span class=p>}</span><span class=w>
 </span><span class=w>
@@ -97,8 +99,9 @@ provide a backtrace, a new backtrace is constructed pointing to the point where 
 occurred (rather than the origin of the error).</p><h1 id=recommended-practices-in-error-handling>Recommended practices in error handling</h1><p>It might be useful to think about dividing the errors an application produces into two broad groups:
 those which are intended to be user-facing, and those which are not.</p><p>An example of the former is that I might use failure to specify a <code>UserError</code> enum which
 encapsulates a <code>ValidationError</code> to return whenever a user sends bad input:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=n>dev</span>::<span class=n>HttpResponseBuilder</span><span class=p>,</span><span class=w> </span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>header</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>StatusCode</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w>
-</span><span class=w>    </span><span class=n>HttpServer</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>http</span>::<span class=p>{</span><span class=n>header</span>::<span class=n>ContentType</span><span class=p>,</span><span class=w> </span><span class=n>StatusCode</span><span class=p>},</span><span class=w>
+</span><span class=w>    </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>,</span><span class=w>
 </span><span class=w></span><span class=p>};</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>derive_more</span>::<span class=p>{</span><span class=n>Display</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=p>};</span><span class=w>
 </span><span class=w>
@@ -110,8 +113,8 @@ encapsulates a <code>ValidationError</code> to return whenever a user sends bad 
 </span><span class=w>
 </span><span class=w></span><span class=k>impl</span><span class=w> </span><span class=n>error</span>::<span class=n>ResponseError</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>UserError</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>fn</span> <span class=nf>error_response</span><span class=p>(</span><span class=o>&amp;</span><span class=bp>self</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>        </span><span class=n>HttpResponseBuilder</span>::<span class=n>new</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>status_code</span><span class=p>())</span><span class=w>
-</span><span class=w>            </span><span class=p>.</span><span class=n>set_header</span><span class=p>(</span><span class=n>header</span>::<span class=n>CONTENT_TYPE</span><span class=p>,</span><span class=w> </span><span class=s>&#34;text/html; charset=utf-8&#34;</span><span class=p>)</span><span class=w>
+</span><span class=w>        </span><span class=n>HttpResponse</span>::<span class=n>build</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>status_code</span><span class=p>())</span><span class=w>
+</span><span class=w>            </span><span class=p>.</span><span class=n>insert_header</span><span class=p>(</span><span class=n>ContentType</span>::<span class=n>html</span><span class=p>())</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>body</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>to_string</span><span class=p>())</span><span class=w>
 </span><span class=w>    </span><span class=p>}</span><span class=w>
 </span><span class=w>    </span><span class=k>fn</span> <span class=nf>status_code</span><span class=p>(</span><span class=o>&amp;</span><span class=bp>self</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>StatusCode</span><span class=w> </span><span class=p>{</span><span class=w>
@@ -127,8 +130,9 @@ user. For example, if a database goes down and client libraries start producing 
 errors, or if an HTML template was improperly formatted and errors when rendered. In these cases, it
 might be preferable to map the errors to a generic error suitable for user consumption.</p><p>Here&rsquo;s an example that maps an internal error to a user-facing <code>InternalError</code> with a custom
 message:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>actix_web</span>::<span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=n>dev</span>::<span class=n>HttpResponseBuilder</span><span class=p>,</span><span class=w> </span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>header</span><span class=p>,</span><span class=w> </span><span class=n>http</span>::<span class=n>StatusCode</span><span class=p>,</span><span class=w> </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w>
-</span><span class=w>    </span><span class=n>HttpServer</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>error</span><span class=p>,</span><span class=w> </span><span class=n>get</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>http</span>::<span class=p>{</span><span class=n>header</span>::<span class=n>ContentType</span><span class=p>,</span><span class=w> </span><span class=n>StatusCode</span><span class=p>},</span><span class=w>
+</span><span class=w>    </span><span class=n>App</span><span class=p>,</span><span class=w> </span><span class=n>HttpResponse</span><span class=p>,</span><span class=w> </span><span class=n>HttpServer</span><span class=p>,</span><span class=w>
 </span><span class=w></span><span class=p>};</span><span class=w>
 </span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>derive_more</span>::<span class=p>{</span><span class=n>Display</span><span class=p>,</span><span class=w> </span><span class=n>Error</span><span class=p>};</span><span class=w>
 </span><span class=w>
@@ -140,10 +144,11 @@ message:</p><div class=highlight><pre class=chroma><code class=language-rust dat
 </span><span class=w>
 </span><span class=w></span><span class=k>impl</span><span class=w> </span><span class=n>error</span>::<span class=n>ResponseError</span><span class=w> </span><span class=k>for</span><span class=w> </span><span class=n>UserError</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>    </span><span class=k>fn</span> <span class=nf>error_response</span><span class=p>(</span><span class=o>&amp;</span><span class=bp>self</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>HttpResponse</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>        </span><span class=n>HttpResponseBuilder</span>::<span class=n>new</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>status_code</span><span class=p>())</span><span class=w>
-</span><span class=w>            </span><span class=p>.</span><span class=n>set_header</span><span class=p>(</span><span class=n>header</span>::<span class=n>CONTENT_TYPE</span><span class=p>,</span><span class=w> </span><span class=s>&#34;text/html; charset=utf-8&#34;</span><span class=p>)</span><span class=w>
+</span><span class=w>        </span><span class=n>HttpResponse</span>::<span class=n>build</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>status_code</span><span class=p>())</span><span class=w>
+</span><span class=w>            </span><span class=p>.</span><span class=n>insert_header</span><span class=p>(</span><span class=n>ContentType</span>::<span class=n>html</span><span class=p>())</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>body</span><span class=p>(</span><span class=bp>self</span><span class=p>.</span><span class=n>to_string</span><span class=p>())</span><span class=w>
 </span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w>
 </span><span class=w>    </span><span class=k>fn</span> <span class=nf>status_code</span><span class=p>(</span><span class=o>&amp;</span><span class=bp>self</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>StatusCode</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>        </span><span class=k>match</span><span class=w> </span><span class=o>*</span><span class=bp>self</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>            </span><span class=n>UserError</span>::<span class=n>InternalError</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>StatusCode</span>::<span class=n>INTERNAL_SERVER_ERROR</span><span class=p>,</span><span class=w>
@@ -195,7 +200,7 @@ to see.</p><h1 id=error-logging-1>Error Logging</h1><p>This is a basic example u
 </span><span class=w>            </span><span class=p>.</span><span class=n>wrap</span><span class=p>(</span><span class=n>logger</span><span class=p>)</span><span class=w>
 </span><span class=w>            </span><span class=p>.</span><span class=n>service</span><span class=p>(</span><span class=n>index</span><span class=p>)</span><span class=w>
 </span><span class=w>    </span><span class=p>})</span><span class=w>
-</span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>(</span><span class=s>&#34;127.0.0.1:8080&#34;</span><span class=p>)</span><span class=o>?</span><span class=w>
+</span><span class=w>    </span><span class=p>.</span><span class=n>bind</span><span class=p>((</span><span class=s>&#34;127.0.0.1&#34;</span><span class=p>,</span><span class=w> </span><span class=mi>8080</span><span class=p>))</span><span class=o>?</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=n>run</span><span class=p>()</span><span class=w>
 </span><span class=w>    </span><span class=p>.</span><span class=k>await</span><span class=w>
 </span><span class=w></span><span class=p>}</span><span class=w>
