@@ -13,7 +13,7 @@ Toggle navigation</button><nav class="leftnav collapse show" id=collapsing-docna
 </span><span class=w>
 </span><span class=w></span><span class=cp>#[actix_web::main]</span><span class=w>
 </span><span class=w></span><span class=k>async</span><span class=w> </span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
-</span><span class=w>    </span><span class=c1>// load ssl keys
+</span><span class=w>    </span><span class=c1>// load TLS keys
 </span><span class=c1></span><span class=w>    </span><span class=c1>// to create a self-signed temporary cert for testing:
 </span><span class=c1></span><span class=w>    </span><span class=c1>// `openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365 -subj &#39;/CN=localhost&#39;`
 </span><span class=c1></span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>builder</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>SslAcceptor</span>::<span class=n>mozilla_intermediate</span><span class=p>(</span><span class=n>SslMethod</span>::<span class=n>tls</span><span class=p>()).</span><span class=n>unwrap</span><span class=p>();</span><span class=w>
